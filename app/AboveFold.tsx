@@ -7,20 +7,20 @@ export default function AboveFold() {
   const bio = <p>Netizen, Product Leader, Gestaltingenieur&sup1;</p>
 
   const about = [
-    <p>I’m working to build a lasting internet org that embodies the golden rule&sup2;. I’m a founder of Inspect Element, a home for builders and technologists.</p>,
-    <p>Typically I’m mission-driven. I care about big ideas. Often I err on the side of pragmatism. I like good aesthetic and well-prepared food. Hong Kong is home, but I’m <DecoratedLink href="#location">nomadic</DecoratedLink>.</p>,
+    <p key={'1'}>I’m working to build a lasting internet org that embodies the golden rule&sup2;. I’m a founder of Inspect Element, a home for builders and technologists.</p>,
+    <p key={'2'}>Typically I’m mission-driven. I care about big ideas. Often I err on the side of pragmatism. I like good aesthetic and well-prepared food. Hong Kong is home, but I’m <DecoratedLink href="#location">nomadic</DecoratedLink>.</p>,
   ]
 
   const work = [
-    <p>Inspect Element is a new software venture builder. We help emerging software builders in Hong Kong, breathing fresh ideas and tactics into the local scene. We run an agency, a founders incubator, and a seed fund.</p>,
-    <p>Recently I started something new in circular design and manufacturing. We imagine a world where circular and sustainable materials are 10x cheaper. We want to make these materials ubiquitous in mass production.</p>,
-    <p>Prior to IE, I held product and growth leadership roles at several early-stage startups. And I started several startups that failed. I've worked with companies like Bowtie, Clearbanc, Time Auction, 24 Hour Race and <DecoratedLink href="#location">more</DecoratedLink>.</p>,
+    <p key={'1'}>Inspect Element is a new software venture builder. We help emerging software builders in Hong Kong, breathing fresh ideas and tactics into the local scene. We run an agency, a founders incubator, and a seed fund.</p>,
+    <p key={'2'}>Recently I started something new in circular design and manufacturing. We imagine a world where circular and sustainable materials are 10x cheaper. We want to make these materials ubiquitous in mass production.</p>,
+    <p key={'3'}>Prior to IE, I held product and growth leadership roles at several early-stage startups. And I started several startups that failed. I’m worked with companies like Bowtie, Clearbanc, Time Auction, 24 Hour Race and <DecoratedLink href="#location">more</DecoratedLink>.</p>,
   ]
 
   const artifacts = [
-    <p>Essay on my time at Bowtie, leading product and design: <DecoratedLink href="">12 months of agile product development</DecoratedLink></p>,
-    <p>Travelogue of a monthlong pandemic roadtrip: <DecoratedLink href="https://google.com">Thirty Taiwan vanlife days</DecoratedLink></p>,
-    <p>Fledgling ideas on cram school culture and painpoints: <DecoratedLink href="">This is not the education you’re looking for</DecoratedLink></p>,
+    <p key={'1'}>Essay on my time at Bowtie, leading product and design: <DecoratedLink href="">12 months of agile product development</DecoratedLink></p>,
+    <p key={'2'}>Travelogue of a monthlong pandemic roadtrip: <DecoratedLink href="https://google.com">Thirty Taiwan vanlife days</DecoratedLink></p>,
+    <p key={'3'}>Fledgling ideas on cram school culture and painpoints: <DecoratedLink href="">This is not the education you’re looking for</DecoratedLink></p>,
   ]
 
   return (
@@ -104,7 +104,7 @@ export default function AboveFold() {
           <h3 className="
             text-zinc-950 text-base font-light
             bg-zinc-50 inline mb-1
-          ">Rapture</h3>
+          ">Reading</h3>
 
         </div>
       </div>

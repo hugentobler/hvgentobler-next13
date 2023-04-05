@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { timezone } from "@data/timezone"
 
-export default function Click({
+export default function Clock({
   className
 }: {
   className?: string
@@ -14,7 +14,7 @@ export default function Click({
   const refreshClock = useCallback(() => {
     const browserTime = new Date()
     setTime(browserTime.toLocaleTimeString('en-GB', { timeZone }))
-  }, [setTime])
+  }, [setTime, timeZone])
 
   useEffect(() => {
     const timer = setInterval(refreshClock, 1000)
