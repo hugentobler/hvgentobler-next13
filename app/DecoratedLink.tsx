@@ -1,30 +1,38 @@
 import Link from 'next/link'
 
 const styles = `
-  underline underline-offset-2 hover:no-underline decoration-zinc-300
-  bg-gradient-to-r from-zinc-600 to-zinc-600
-  bg-[length:0_0] bg-[left_bottom] bg-no-repeat
-  transition-[background-size] duration-300 hover:bg-[length:100%_1px]
+  bg-gradient-to-r from-zinc-300 to-zinc-300 group-[.vertical]:bg-gradient-to-b
+  bg-[length:100%_1px] bg-[left_bottom] bg-no-repeat
+  group-[.vertical]:bg-[length:1px_100%] group-[.vertical]:bg-[left_top]
+  hover:from-zinc-600 hover:to-zinc-600
+  hover:animate-underline group-[.vertical]:hover:animate-underline-vertical
+  focus:outline-none focus:ring-1 focus:ring-zinc-600 focus:ring-offset-1
   `
 
 export default function DecoratedLink({
   href,
+  target,
   children
 }: {
   href: string,
+  target?: string,
   children?: React.ReactNode
 }) {
-  if (href.charAt(0) == '#') {
+  if (target && target == '_blank') {
+    return (
+      <a href={href} target="_blank" className={styles} >
+        {children}
+      </a>
+    )
+  } else if (href.charAt(0) == '#') {
     /* Looks like Next13 doesn't support scroll=false */
     return (
-      <a href={href} data-text={children}
-        className={styles} >
+      <a href={href} className={styles} >
         {children}
-      </a >
+      </a>
     )
   } else return (
-    <Link href={href} data-text={children}
-      className={styles}>
+    <Link href={href} className={styles}>
       {children}
     </Link>
   )
