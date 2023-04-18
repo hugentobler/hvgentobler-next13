@@ -1,12 +1,12 @@
 import Clock from "./Clock"
 
-export default function Navigation() {
+export default function Header() {
   return (
-    <nav className="
+    <div className="
         sticky top-1
         grid grid-cols-11 gap-x-6 gap-y-3
         my-3 z-10
-        text-xs font-light
+        text-sm lg:text-xs font-light
         opacity-0 animate-fade-in
         "
       style={{ animationDelay: "1000ms" }}>
@@ -19,6 +19,6 @@ export default function Navigation() {
         col-start-10 sm:col-start-8 lg:col-start-8">
         <Clock className="float-right sm:float-none" />
       </p>
-    </nav>
+    </div>
   )
 }

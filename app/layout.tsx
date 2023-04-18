@@ -1,6 +1,6 @@
 import './globals.css'
 import localFont from 'next/font/local'
-import Navigation from './Navigation'
+import Header from './Header'
 
 export const metadata = {
   title: 'Hugentobler',
@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className="
         bg-zinc-50 text-zinc-700">
         <div className="h-screen max-w-7xl mx-auto px-3">
-          <Navigation />
+          <Header />
           {children}
         </div>
       </body>

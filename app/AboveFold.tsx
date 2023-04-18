@@ -28,12 +28,12 @@ export default function AboveFold() {
 
   return (
     <div className="flex items-center
-    py-3 lg:py-0 lg:h-[calc(100vh-1rem-1.5rem)]">
+    py-3 lg:py-0 lg:h-[calc(100vh-1rem-1.5rem)] lg:min-h-[560px]">
       <div className="
       grid z-20 lg:-translate-y-4
       grid-cols-11
       gap-x-6
-      gap-y-3
+      gap-y-4
       ">
         <div className="
           col-span-8 sm:col-span-5 lg:col-span-2
@@ -49,7 +49,7 @@ export default function AboveFold() {
           />
           <div>
             <h1 className="
-            text-zinc-950 text-base font-light
+            text-zinc-950 text-lg lg:text-base font-light
             bg-zinc-50 inline-block leading-5
             mt-3
             ">Christopher Hugentobler
@@ -60,34 +60,34 @@ export default function AboveFold() {
                 ">姚思陶</span>
             </h1>
             {cloneElement(bio, {
-              className: "text-xs bg-zinc-50"
+              className: "text-sm lg:text-xs bg-zinc-50"
             })}
           </div>
         </div>
         <div className="
-          col-span-8 sm:col-span-5 lg:col-span-3 xl:col-span-3
+          col-span-9 sm:col-span-5 lg:col-span-3 xl:col-span-3
           col-start-3 sm:col-start-3 lg:col-start-5 xl:col-start-5
           row-start-2 lg:row-start-1 opacity-0 animate-fade-in"
         >
           <h3 className="
-          text-zinc-950 text-base font-light
-          bg-zinc-50 inline mb-1
+          text-zinc-950 text-lg lg:text-base font-light
+          bg-zinc-50 inline
           before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/6)]
           ">About</h3>
           {about.map((e, i) => (
             cloneElement(e, {
               key: i,
-              className: "mb-3 text-xs bg-zinc-50",
+              className: "mb-3 text-sm lg:text-xs bg-zinc-50",
             })
           ))}
           <h3 className="
-          text-zinc-950 text-base font-light
-          bg-zinc-50 inline mb-1
+          text-zinc-950 text-lg lg:text-base font-light
+          bg-zinc-50 inline-block mt-1
           ">Work</h3>
           {work.map((e, i) => (
             cloneElement(e, {
               key: i,
-              className: "mb-3 last:mb-0 text-xs bg-zinc-50",
+              className: "mb-3 last:mb-0 text-sm lg:text-xs bg-zinc-50",
             })
           ))}
         </div>
@@ -96,23 +96,23 @@ export default function AboveFold() {
           col-start-3 sm:col-start-8 lg:col-start-8
           sm:row-start-2 lg:row-start-1 opacity-0 animate-fade-in">
           <h3 className="
-          text-zinc-950 text-base font-light
-          bg-zinc-50 inline mb-1
+          text-zinc-950 text-lg lg:text-base font-light
+          bg-zinc-50 inline
           before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/6)]
           ">Artifacts</h3>
           {artifacts.map((e, i) => (
             cloneElement(e, {
               key: i,
-              className: "mb-3 text-xs bg-zinc-50",
+              className: "mb-3 text-sm lg:text-xs bg-zinc-50",
             })
           ))}
           <h3 className="
-            text-zinc-950 text-base font-light
-            bg-zinc-50 inline mb-1
+            text-zinc-950 text-lg lg:text-base font-light
+            bg-zinc-50 inline-block mt-1
           ">Reading</h3>
           {/* @ts-expect-error Async Server Component */}
           <BookIsReading />
-          <p className="mb-3 text-xs bg-zinc-50">And <DecoratedLink href="#reading">more</DecoratedLink>.</p>
+          <p className="mb-3 text-sm lg:text-xs bg-zinc-50">And <DecoratedLink href="#reading">more</DecoratedLink>.</p>
         </div>
         <div className="
             col-span-1 lg:self-end
@@ -121,7 +121,7 @@ export default function AboveFold() {
             opacity-0 animate-fade-in
           " style={{ animationDelay: "1000ms" }}>
           {cloneElement(footnotes, {
-            className: "text-xs bg-zinc-50 text-zinc-400 lg:float-right group vertical", // .group allows to style child
+            className: "text-sm lg:text-xs bg-zinc-50 text-zinc-400 lg:float-right group vertical", // .group allows to style child
             style: { writingMode: 'vertical-rl' }
           })}
         </div>
