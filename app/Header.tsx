@@ -1,24 +1,56 @@
-import Clock from "./Clock"
+import { cloneElement } from 'react'
+import Clock from './Clock'
+import { locations } from '@data/locations'
+import DecoratedLink from './DecoratedLink'
 
 export default function Header() {
+  const currentLocation = locations[0]
+
+  const nav = [
+    <DecoratedLink href="#">About</DecoratedLink>,
+    <DecoratedLink href="#">Résumé</DecoratedLink>,
+    <DecoratedLink href="#">Email</DecoratedLink>,
+  ]
+
   return (
-    <div className="
-        sticky top-1
+    <>
+      <div className="
+        z-10 sticky top-1 my-3
         grid grid-cols-11 gap-x-6 gap-y-3
-        my-3 z-10
-        text-sm lg:text-xs font-light
+        text-sm lg:text-xs text-zinc-400
         opacity-0 animate-fade-in
         "
-      style={{ animationDelay: "1000ms" }}>
-      <h3 className="
-        col-span-6 sm:col-span-3
-        col-start-3 sm:col-start-3
-        ">Santa Ana, California</h3>
-      <p className="
-        col-span-1
-        col-start-10 sm:col-start-8 lg:col-start-8">
-        <Clock className="float-right sm:float-none" />
-      </p>
-    </div>
+        style={{ animationDelay: "1000ms" }}>
+        <nav className="hidden lg:block
+          col-span-7 col-start-1">
+          {nav.map((e, i) => (
+            cloneElement(e, {
+              key: i,
+              className: ""
+            })
+          ))}
+        </nav>
+        <div className="col-span-4 col-start-10 sm:col-start-8">
+          <span> {currentLocation.place} &nbsp;</span>
+          <Clock className="float-right sm:float-none" />
+          <div className="float-right"><DecoratedLink href="#">Dark Mode</DecoratedLink></div>
+        </div>
+      </div>
+      <div className="
+        z-50 fixed inset-x-0 bottom-0 lg:hidden
+        bg-white opacity-0 animate-fade-in
+        text-sm lg:text-xs text-zinc-400
+        "
+        style={{ animationDelay: "1000ms" }}>
+        <nav>
+          {nav.map((e, i) => (
+            cloneElement(e, {
+              key: i,
+              className: ""
+            })
+          ))}
+        </nav>
+      </div>
+    </>
   )
 }

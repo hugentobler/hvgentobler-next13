@@ -50,7 +50,7 @@ export default function AboveFold() {
           <div>
             <h1 className="
             text-zinc-950 text-lg lg:text-base font-light
-            bg-zinc-50 inline-block leading-5
+            bg-zinc-50 inline-block leading-5 lg:leading-5
             mt-3
             ">Christopher Hugentobler
               <span className="lg:hidden">&nbsp;</span>

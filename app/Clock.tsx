@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect, useCallback } from "react"
-import { timezone } from "@data/timezone"
+import { useState, useEffect, useCallback } from 'react'
+import { timezone } from '@data/timezone'
 
 export default function Clock({
   className
