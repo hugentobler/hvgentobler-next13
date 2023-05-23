@@ -9,13 +9,17 @@ import { timezone } from '#/data/timezone'
 // https://www.joshwcomeau.com/react/the-perils-of-rehydration/
 
 export default function ClockClientOnly({ ...props }) {
+  // If component not mounted, return null for server.
   const [hasMounted, setHasMounted] = useState(false)
+
   useEffect(() => {
     setHasMounted(true)
   }, [])
+
   if (!hasMounted) {
     return null;
   }
+
   return (
     <Clock {...props} />
   )
@@ -27,18 +31,22 @@ const Clock = ({
   className?: string
 }) => {
   const timeZone = timezone[0]
+  // time is init directly with browser time to avoid flicker
   const [time, setTime] = useState(() => {
     const browserTime = new Date()
     return browserTime.toLocaleTimeString('en-GB', { timeZone })
   })
+
   const refreshClock = useCallback(() => {
     const browserTime = new Date()
     setTime(browserTime.toLocaleTimeString('en-GB', { timeZone }))
   }, [timeZone])
+
   useEffect(() => {
     const timer = setInterval(refreshClock, 1000)
     return () => clearInterval(timer)
   }, [refreshClock])
+
   return (
     <span className={className}>{time}</span>
   )

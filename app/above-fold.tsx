@@ -31,9 +31,7 @@ export default function AboveFold() {
     py-3 lg:py-0 lg:h-[calc(100vh-1rem-1.5rem)] lg:min-h-[560px]">
       <div className="
       grid z-20 lg:-translate-y-4
-      grid-cols-11
-      gap-x-6
-      gap-y-4
+      grid-cols-11 gap-x-8 gap-y-8 pr-6 lg:pr-0
       ">
         <div className="
           col-span-8 sm:col-span-5 lg:col-span-2
@@ -77,7 +75,7 @@ export default function AboveFold() {
           ))}
           <h3 className="
           text-zinc-950 text-lg lg:text-base font-light
-          bg-zinc-50 inline-block mt-1
+          bg-zinc-50 inline-block mt-5
           ">Work</h3>
           {work.map((e, i) => (
             <p key={i} className="mb-3 last:mb-0 text-sm lg:text-xs bg-zinc-50">{e}</p>
@@ -97,7 +95,7 @@ export default function AboveFold() {
           ))}
           <h3 className="
             text-zinc-950 text-lg lg:text-base font-light
-            bg-zinc-50 inline-block mt-1
+            bg-zinc-50 inline-block mt-5
           ">Reading</h3>
           {/* @ts-expect-error Async Server Component */}
           <BookIsReading />

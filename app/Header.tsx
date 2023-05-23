@@ -2,18 +2,16 @@ import { locations } from '#/data/locations'
 import Clock from './clock'
 import DecoratedLink from '#/components/decorated-link'
 
-const ClockFallback = () => (
-  <><p>Clock</p></>
-)
+const nav: { [key: string]: string } = {
+  'About': '/about',
+  'Résumé': '/resume',
+  'Email': '/email'
+}
 
 export default function Header() {
   const currentLocation = locations[0]
 
-  const nav: { [key: string]: string } = {
-    'About': '/about',
-    'Résumé': '/resume',
-    'Email': '/email'
-  }
+
 
   return (
     <>
@@ -24,14 +22,7 @@ export default function Header() {
         opacity-0 animate-fade-in
         "
         style={{ animationDelay: "1000ms" }}>
-        <nav className="hidden lg:block
-          col-span-7 col-start-1">
-          {Object.keys(nav).map((key: string, i: number) => (
-            <DecoratedLink key={i} href={nav[key]}>
-              {key}
-            </DecoratedLink>
-          ))}
-        </nav>
+        <Nav className="hidden lg:block col-span-7 col-start-1 space-x-4" />
         <div className="col-span-4 col-start-10 sm:col-start-8">
           <span> {currentLocation.place} &nbsp;</span>
           <Clock className="float-right sm:float-none" />
@@ -56,3 +47,13 @@ export default function Header() {
     </>
   )
 }
+
+const Nav = ({ ...props }) => (
+  <nav {...props}>
+    {Object.keys(nav).map((key: string, i: number) => (
+      <DecoratedLink key={i} href={nav[key]}>
+        {key}
+      </DecoratedLink>
+    ))}
+  </nav>
+)
