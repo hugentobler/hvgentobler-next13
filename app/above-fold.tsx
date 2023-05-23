@@ -28,19 +28,21 @@ export default function AboveFold() {
 
   return (
     <div className="flex items-center
-    py-3 lg:py-0 lg:h-[calc(100vh-1rem-1.5rem)] lg:min-h-[560px]">
+    py-4 lg:py-0 lg:h-[calc(100vh-1rem-1.5rem)] lg:min-h-[560px]">
       <div className="
       grid z-20 lg:-translate-y-4
-      grid-cols-11 gap-x-8 gap-y-8 pr-6 lg:pr-0
+      grid-cols-11 gap-x-8 gap-y-8
       ">
-        <div className="
-          col-span-8 sm:col-span-5 lg:col-span-2
-          col-start-3 sm:col-start-3 lg:col-start-3
-          opacity-0 animate-fade-in">
+        <div className="opacity-0 animate-fade-in
+          col-span-8 col-start-3
+          sm:col-span-5 sm:col-start-2
+          md:col-span-3 md:col-start-2
+          lg:col-span-3 lg:col-start-1
+          xl:col-span-2 xl:col-start-1">
           <Image
             alt=""
             src="/2022-hku.jpg"
-            className="w-48 lg:w-full"
+            className="w-48 md:w-full"
             width={500}
             height={500}
             priority={true}
@@ -48,7 +50,7 @@ export default function AboveFold() {
           <div>
             <h1 className="
             text-zinc-950 text-lg lg:text-base font-light
-            bg-zinc-50 inline-block leading-5 lg:leading-5
+            bg-zinc-50 inline-block leading-5
             mt-3
             ">Christopher Hugentobler
               <span className="lg:hidden">&nbsp;</span>
@@ -60,15 +62,16 @@ export default function AboveFold() {
             <p className="text-sm lg:text-xs bg-zinc-50">{oneLiner}</p>
           </div>
         </div>
-        <div className="
-          col-span-9 sm:col-span-5 lg:col-span-3 xl:col-span-3
-          col-start-3 sm:col-start-3 lg:col-start-5 xl:col-start-5
-          row-start-2 lg:row-start-1 opacity-0 animate-fade-in"
-        >
+        <div className="opacity-0 animate-fade-in
+          col-span-8 col-start-3
+          sm:col-span-5 sm:col-start-2
+          md:col-span-6 md:col-start-5
+          lg:col-span-4 lg:col-start-4
+          xl:col-span-4 xl:col-start-3">
           <h3 className="
           text-zinc-950 text-lg lg:text-base font-light
           bg-zinc-50 inline
-          before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/6)]
+          before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/8)]
           ">About</h3>
           {about.map((e, i) => (
             <p key={i} className="mb-3 text-sm lg:text-xs bg-zinc-50">{e}</p>
@@ -81,14 +84,16 @@ export default function AboveFold() {
             <p key={i} className="mb-3 last:mb-0 text-sm lg:text-xs bg-zinc-50">{e}</p>
           ))}
         </div>
-        <div className="
-          col-span-8 sm:col-span-4 lg:col-span-3
-          col-start-3 sm:col-start-8 lg:col-start-8
-          sm:row-start-2 lg:row-start-1 opacity-0 animate-fade-in">
+        <div className="opacity-0 animate-fade-in
+          col-span-8 col-start-3 pr-0
+          sm:col-span-5 sm:col-start-7 sm:row-start-2 sm:pr-2
+          md:col-span-6 md:col-start-5 md:pr-0
+          lg:col-span-3 lg:col-start-8 lg:row-start-1
+          xl:col-span-3 xl:col-start-7">
           <h3 className="
           text-zinc-950 text-lg lg:text-base font-light
           bg-zinc-50 inline
-          before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/6)]
+          before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/8)]
           ">Artifacts</h3>
           {artifacts.map((e, i) => (
             <p key={i} className="mb-3 text-sm lg:text-xs bg-zinc-50">{e}</p>

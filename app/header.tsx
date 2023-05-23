@@ -9,25 +9,42 @@ const nav: { [key: string]: string } = {
 }
 
 export default function Header() {
-  const currentLocation = locations[0]
-
-
-
   return (
     <>
       <div className="
-        z-10 sticky top-1 my-3
-        grid grid-cols-11 gap-x-6 gap-y-3
-        text-sm lg:text-xs text-zinc-400
+        z-10 sticky top-1 my-4
+        grid grid-cols-11 gap-x-8 gap-y-3
+        text-sm lg:text-xs font-light leading-none
         opacity-0 animate-fade-in
         "
         style={{ animationDelay: "1000ms" }}>
-        <Nav className="hidden lg:block col-span-7 col-start-1 space-x-4" />
-        <div className="col-span-4 col-start-10 sm:col-start-8">
-          <span> {currentLocation.place} &nbsp;</span>
-          <Clock className="float-right sm:float-none" />
-          <div className="float-right"><DecoratedLink href="#">Dark Mode</DecoratedLink></div>
+        <Nav className="space-x-3 hidden lg:block
+          col-span-6 col-start-1" />
+        <div className="
+          hidden lg:block
+          lg:col-span-3 lg:col-start-8
+          ">
+          <Clock />
+          <CurrentLocation />
         </div>
+        <div className="
+          col-span-8 col-end-11
+          sm:col-end-12
+          md:col-end-11
+          lg:col-span-1 lg:col-start-11 lg:col-end-auto">
+          <div className="float-right">
+            <Clock className="lg:hidden" />
+            <CurrentLocation className="lg:hidden" />
+            <DecoratedLink href="#">Dark</DecoratedLink>
+          </div>
+        </div>
+      </div>
+      <div className="
+        z-50 fixed left-1/2 -translate-x-1/2 bottom-4 lg:hidden
+        p-2
+        bg-zinc-50 border border-solid border-zinc-400
+        ">
+        <span>Menu</span>
       </div>
       {/* <div className="
         z-50 fixed inset-x-0 bottom-0 lg:hidden
@@ -57,3 +74,11 @@ const Nav = ({ ...props }) => (
     ))}
   </nav>
 )
+
+const CurrentLocation = ({ ...props }) => {
+  const currentLocation = locations[0]
+
+  return (
+    <span {...props}>&nbsp;&nbsp; {currentLocation.place} &nbsp;&nbsp;</span>
+  )
+}
