@@ -22,6 +22,7 @@ async function getBookIsReading() {
   } } } = await getLiteralToken()
   const readingStatus = 'IS_READING'
   const options = {
+    next: { revalidate: 86400 }, // revalidate books every day
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

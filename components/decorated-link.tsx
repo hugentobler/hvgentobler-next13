@@ -12,19 +12,14 @@ const styles = `
 export default function DecoratedLink({
   href,
   target,
-  children
+  children,
+  ...props
 }: {
   href: string,
   target?: string,
   children?: React.ReactNode
 }) {
-  if (target && target == '_blank') {
-    return (
-      <a href={href} target="_blank" className={styles} >
-        {children}
-      </a>
-    )
-  } else if (href.charAt(0) == '#') {
+  if (href.charAt(0) == '#') {
     /* Looks like Next13 doesn't support scroll=false */
     return (
       <a href={href} className={styles} >
@@ -32,7 +27,7 @@ export default function DecoratedLink({
       </a>
     )
   } else return (
-    <Link href={href} className={styles}>
+    <Link href={href} target={target} className={styles} {...props}>
       {children}
     </Link>
   )

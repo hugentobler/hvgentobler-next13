@@ -1,16 +1,15 @@
-import { cloneElement } from 'react'
-import Clock from './Clock'
-import { locations } from '@data/locations'
-import DecoratedLink from './DecoratedLink'
+import Clock from './clock'
+import { locations } from '#/data/locations'
+import DecoratedLink from '#/components/decorated-link'
 
 export default function Header() {
   const currentLocation = locations[0]
 
-  const nav = [
-    <DecoratedLink href="#">About</DecoratedLink>,
-    <DecoratedLink href="#">Résumé</DecoratedLink>,
-    <DecoratedLink href="#">Email</DecoratedLink>,
-  ]
+  const nav: { [key: string]: string } = {
+    'About': '/about',
+    'Résumé': '/resume',
+    'Email': '/email'
+  }
 
   return (
     <>
@@ -23,11 +22,10 @@ export default function Header() {
         style={{ animationDelay: "1000ms" }}>
         <nav className="hidden lg:block
           col-span-7 col-start-1">
-          {nav.map((e, i) => (
-            cloneElement(e, {
-              key: i,
-              className: ""
-            })
+          {Object.keys(nav).map((key: string, i: number) => (
+            <DecoratedLink key={i} href={nav[key]}>
+              {key}
+            </DecoratedLink>
           ))}
         </nav>
         <div className="col-span-4 col-start-10 sm:col-start-8">
@@ -36,7 +34,7 @@ export default function Header() {
           <div className="float-right"><DecoratedLink href="#">Dark Mode</DecoratedLink></div>
         </div>
       </div>
-      <div className="
+      {/* <div className="
         z-50 fixed inset-x-0 bottom-0 lg:hidden
         bg-white opacity-0 animate-fade-in
         text-sm lg:text-xs text-zinc-400
@@ -50,7 +48,7 @@ export default function Header() {
             })
           ))}
         </nav>
-      </div>
+      </div> */}
     </>
   )
 }

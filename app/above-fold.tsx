@@ -1,30 +1,30 @@
-import { cloneElement } from 'react'
 import Image from 'next/image'
-import DecoratedLink from './DecoratedLink'
-import BookIsReading from './BookIsReading'
+
+import BookIsReading from './book-is-reading'
+import DecoratedLink from '#/components/decorated-link'
 
 export default function AboveFold() {
 
-  const bio = <p>Netizen, Product Leader, Aspiring Gestaltingenieur&sup1;</p>
+  const oneLiner = <>Netizen, Product Leader, Aspiring Gestaltingenieur&sup1;</>
 
   const about = [
-    <p key={1}>I’m working to build a lasting internet org that embodies the golden rule&sup2;. I’m a founder of Inspect Element, a home for builders and technologists.</p>,
-    <p key={2}>Typically I’m mission-driven. I care about big ideas. Often I err on the side of pragmatism. I like good aesthetic and well-prepared food. Hong Kong is home, but I’m <DecoratedLink href="#location">nomadic</DecoratedLink>.</p>,
+    <>I’m working to build a lasting internet org that embodies the golden rule&sup2;. I’m a founder of Inspect Element, a home for builders and technologists.</>,
+    <>Typically I’m mission-driven. I care about big ideas. Often I err on the side of pragmatism. I like good aesthetic and well-prepared food. Hong Kong is home, but I’m <DecoratedLink href="#location">nomadic</DecoratedLink>.</>
   ]
 
   const work = [
-    <p key={1}>Inspect Element is a new software venture builder. We help emerging software builders in Hong Kong, breathing fresh ideas and tactics into the local scene. We run an agency, a founders incubator, and a seed fund.</p>,
-    <p key={2}>Recently I started something new in circular design and manufacturing. We imagine a world where circular and sustainable materials are 10x cheaper. We want to make these materials ubiquitous in mass production.</p>,
-    <p key={3}>Prior to IE, I held product and growth leadership roles at several early-stage startups. And I started several startups that failed. I’ve worked with companies like Bowtie, Clearbanc, Time Auction, 24 Hour Race and <DecoratedLink href="#location">more</DecoratedLink>.</p>,
+    <>Inspect Element is a new software venture builder. We help emerging software builders in Hong Kong, breathing fresh ideas and tactics into the local scene. We run an agency, a founders incubator, and a seed fund.</>,
+    <>Recently I started something new in circular design and manufacturing. We imagine a world where circular and sustainable materials are 10x cheaper. We want to make these materials ubiquitous in mass production.</>,
+    <>Prior to IE, I held product and growth leadership roles at several early-stage startups. And I started several startups that failed. I’ve worked with companies like Bowtie, Clearbanc, Time Auction, 24 Hour Race and <DecoratedLink href="#location">more</DecoratedLink>.</>,
   ]
 
   const artifacts = [
-    <p key={1}>Essay on my time at Bowtie, leading product and design: <DecoratedLink href="">12 months of agile product development</DecoratedLink></p>,
-    <p key={2}>Travelogue of a monthlong pandemic roadtrip: <DecoratedLink href="https://google.com">Thirty Taiwan vanlife days</DecoratedLink></p>,
-    <p key={3}>Fledgling ideas on cram school culture and painpoints: <DecoratedLink href="">This is not the education you’re looking for</DecoratedLink></p>,
+    <>Essay on my time at Bowtie, leading product and design: <DecoratedLink href="">12 months of agile product development</DecoratedLink></>,
+    <>Travelogue of a monthlong pandemic roadtrip: <DecoratedLink href="https://google.com">Thirty Taiwan vanlife days</DecoratedLink></>,
+    <>Fledgling ideas on cram school culture and painpoints: <DecoratedLink href="">This is not the education you’re looking for</DecoratedLink></>,
   ]
 
-  const footnotes = <p>&sup1; <DecoratedLink href="https://www.vitsoe.com/us/voice/design-by-vitsoe" target="_blank">Design by Vitsœ</DecoratedLink>&nbsp;&nbsp;&sup2; <DecoratedLink href="https://www.eff.org/cyberspace-independence" target="_blank">Promise of the Internet</DecoratedLink></p>
+  const footnotes = <>&sup1; <DecoratedLink target="_blank" href="https://www.vitsoe.com/us/voice/design-by-vitsoe">Design by Vitsœ</DecoratedLink>&nbsp;&nbsp;&sup2; <DecoratedLink target="_blank" href="https://www.eff.org/cyberspace-independence">Promise of the Internet</DecoratedLink></>
 
   return (
     <div className="flex items-center
@@ -59,9 +59,7 @@ export default function AboveFold() {
                 font-sans inline-block -translate-x-px scale-90
                 ">姚思陶</span>
             </h1>
-            {cloneElement(bio, {
-              className: "text-sm lg:text-xs bg-zinc-50"
-            })}
+            <p className="text-sm lg:text-xs bg-zinc-50">{oneLiner}</p>
           </div>
         </div>
         <div className="
@@ -75,20 +73,14 @@ export default function AboveFold() {
           before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/6)]
           ">About</h3>
           {about.map((e, i) => (
-            cloneElement(e, {
-              key: i,
-              className: "mb-3 text-sm lg:text-xs bg-zinc-50",
-            })
+            <p key={i} className="mb-3 text-sm lg:text-xs bg-zinc-50">{e}</p>
           ))}
           <h3 className="
           text-zinc-950 text-lg lg:text-base font-light
           bg-zinc-50 inline-block mt-1
           ">Work</h3>
           {work.map((e, i) => (
-            cloneElement(e, {
-              key: i,
-              className: "mb-3 last:mb-0 text-sm lg:text-xs bg-zinc-50",
-            })
+            <p key={i} className="mb-3 last:mb-0 text-sm lg:text-xs bg-zinc-50">{e}</p>
           ))}
         </div>
         <div className="
@@ -101,10 +93,7 @@ export default function AboveFold() {
           before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/6)]
           ">Artifacts</h3>
           {artifacts.map((e, i) => (
-            cloneElement(e, {
-              key: i,
-              className: "mb-3 text-sm lg:text-xs bg-zinc-50",
-            })
+            <p key={i} className="mb-3 text-sm lg:text-xs bg-zinc-50">{e}</p>
           ))}
           <h3 className="
             text-zinc-950 text-lg lg:text-base font-light
@@ -120,10 +109,8 @@ export default function AboveFold() {
             row-start-2 lg:row-start-1
             opacity-0 animate-fade-in
           " style={{ animationDelay: "1000ms" }}>
-          {cloneElement(footnotes, {
-            className: "text-sm lg:text-xs bg-zinc-50 text-zinc-400 lg:float-right group vertical", // .group allows to style child
-            style: { writingMode: 'vertical-rl' }
-          })}
+          {/* .group allows us to style child */}
+          <p style={{ writingMode: 'vertical-rl' }} className="text-sm lg:text-xs bg-zinc-50 text-zinc-400 lg:float-right group vertical">{footnotes}</p>
         </div>
       </div>
     </div >

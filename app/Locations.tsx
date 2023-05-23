@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { locations } from '@data/locations'
+import { locations } from '#/data/locations'
 
 export default function Locations() {
   return (
