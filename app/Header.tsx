@@ -1,6 +1,10 @@
-import Clock from './clock'
 import { locations } from '#/data/locations'
+import Clock from './clock'
 import DecoratedLink from '#/components/decorated-link'
+
+const ClockFallback = () => (
+  <><p>Clock</p></>
+)
 
 export default function Header() {
   const currentLocation = locations[0]
