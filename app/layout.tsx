@@ -1,11 +1,14 @@
 import './globals.css'
+
 import localFont from 'next/font/local'
+import { themeEffect } from '#/components/theme-effect'
 
 import Header from './header'
 
 export const metadata = {
   title: 'Hugentobler',
   description: '',
+  themeColor: 'transparent'
 }
 
 const univers = localFont({
@@ -13,7 +16,8 @@ const univers = localFont({
     { path: './fonts/UniversLTStd-ThinUltraCn.woff', weight: '250' },
     { path: './fonts/UniversLTStd-Cn.woff', weight: '300' },
     { path: './fonts/UniversLTStd.woff', weight: '400' }
-  ]
+  ],
+  variable: '--font-univers'
 })
 
 export default function RootLayout({
@@ -22,9 +26,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={univers.className}>
+    <html lang="en" className={univers.variable}
+      suppressHydrationWarning={true} // For changing theme classname
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(${themeEffect.toString()})();`
+          }}
+        />
+      </head>
       <body className="
-        bg-zinc-50 text-zinc-700">
+        bg-background text-primary">
         <div className="h-screen max-w-screen-2xl mx-auto px-2 md:px-8">
           <Header />
           {children}

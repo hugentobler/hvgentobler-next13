@@ -8,8 +8,8 @@ export default async function BookIsReading() {
     <>
       {book &&
         <>
-          <p className="text-sm lg:text-xs bg-zinc-50">{book.title}</p >
-          <p className="mb-3 text-sm lg:text-xs bg-zinc-50">{book.authors.map((e: Author) => e.name).join(', ')}</p>
+          <p className="text-sm lg:text-xs bg-background">{book.title}</p >
+          <p className="mb-3 text-sm lg:text-xs bg-background">{book.authors.map((e: Author) => e.name).join(', ')}</p>
         </>
       }
     </>

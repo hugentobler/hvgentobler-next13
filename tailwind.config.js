@@ -1,19 +1,26 @@
+const plugin = require('tailwindcss/plugin')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}", // Note the addition of the `app` directory.
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    './app/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['var(--font-univers)'],
-      },
       animation: {
         'fade-in': 'fadeIn 150ms ease-out forwards',
         'underline': 'underLine 150ms ease-out',
         'underline-vertical': 'underLineVertical 150ms ease-out',
+      },
+      colors: {
+        background: 'var(--background)',
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)'
+      },
+      fontFamily: {
+        sans: ['var(--font-univers)'],
       },
       keyframes: {
         fadeIn: {
@@ -31,5 +38,11 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function({ addVariant }) {
+      // this class is applied to html by theme-effect.ts
+      // like how dark: gets enabled
+      addVariant('system', '.system &')
+    }),
+  ],
 }

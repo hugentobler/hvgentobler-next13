@@ -1,33 +1,35 @@
 import Link from 'next/link'
 
 const styles = `
-  bg-gradient-to-r from-zinc-300 to-zinc-300 group-[.vertical]:bg-gradient-to-b
+  bg-gradient-to-r from-secondary to-secondary group-[.vertical]:bg-gradient-to-b
   bg-[length:100%_1px] bg-[left_bottom] bg-no-repeat
   group-[.vertical]:bg-[length:1px_100%] group-[.vertical]:bg-[left_top]
-  hover:from-zinc-600 hover:to-zinc-600
+  hover:from-primary hover:to-primary
   hover:animate-underline group-[.vertical]:hover:animate-underline-vertical
-  focus:outline-none focus:ring-1 focus:ring-zinc-600 focus:ring-offset-1
+  focus:outline-none focus:ring-1 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background
   `
 
 export default function DecoratedLink({
   href,
   target,
   children,
+  onClick,
   ...props
 }: {
   href: string,
   target?: string,
-  children?: React.ReactNode
+  children?: React.ReactNode,
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }) {
   if (href.charAt(0) == '#') {
     /* Looks like Next13 doesn't support scroll=false */
     return (
-      <a href={href} className={styles} >
+      <a href={href} className={styles} onClick={onClick} >
         {children}
       </a>
     )
   } else return (
-    <Link href={href} target={target} className={styles} {...props}>
+    <Link href={href} target={target} className={styles} onClick={onClick} {...props}>
       {children}
     </Link>
   )

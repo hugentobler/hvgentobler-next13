@@ -49,8 +49,8 @@ export default function AboveFold() {
           />
           <div>
             <h1 className="
-            text-zinc-950 text-lg lg:text-base font-light
-            bg-zinc-50 inline-block leading-5
+            text-lg lg:text-base font-light
+            bg-background inline-block leading-5
             mt-3
             ">Christopher Hugentobler
               <span className="lg:hidden">&nbsp;</span>
@@ -59,7 +59,7 @@ export default function AboveFold() {
                 font-sans inline-block -translate-x-px scale-90
                 ">姚思陶</span>
             </h1>
-            <p className="text-sm lg:text-xs bg-zinc-50">{oneLiner}</p>
+            <p className="text-sm lg:text-xs bg-background">{oneLiner}</p>
           </div>
         </div>
         <div className="opacity-0 animate-fade-in
@@ -69,19 +69,19 @@ export default function AboveFold() {
           lg:col-span-4 lg:col-start-4
           xl:col-span-4 xl:col-start-3">
           <h3 className="
-          text-zinc-950 text-lg lg:text-base font-light
-          bg-zinc-50 inline
+          text-lg lg:text-base font-light
+          bg-background inline
           before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/8)]
           ">About</h3>
           {about.map((e, i) => (
-            <p key={i} className="mb-3 text-sm lg:text-xs bg-zinc-50">{e}</p>
+            <p key={i} className="mb-3 text-sm lg:text-xs background">{e}</p>
           ))}
           <h3 className="
-          text-zinc-950 text-lg lg:text-base font-light
-          bg-zinc-50 inline-block mt-5
+          text-lg lg:text-base font-light
+          bg-background inline-block mt-5
           ">Work</h3>
           {work.map((e, i) => (
-            <p key={i} className="mb-3 last:mb-0 text-sm lg:text-xs bg-zinc-50">{e}</p>
+            <p key={i} className="mb-3 last:mb-0 text-sm lg:text-xs bg-background">{e}</p>
           ))}
         </div>
         <div className="opacity-0 animate-fade-in
@@ -91,20 +91,20 @@ export default function AboveFold() {
           lg:col-span-3 lg:col-start-8 lg:row-start-1
           xl:col-span-3 xl:col-start-7">
           <h3 className="
-          text-zinc-950 text-lg lg:text-base font-light
-          bg-zinc-50 inline
+          text-lg lg:text-base font-light
+          bg-background inline
           before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/8)]
           ">Artifacts</h3>
           {artifacts.map((e, i) => (
-            <p key={i} className="mb-3 text-sm lg:text-xs bg-zinc-50">{e}</p>
+            <p key={i} className="mb-3 text-sm lg:text-xs bg-background">{e}</p>
           ))}
           <h3 className="
-            text-zinc-950 text-lg lg:text-base font-light
-            bg-zinc-50 inline-block mt-5
+            text-lg lg:text-base font-light
+            bg-background inline-block mt-5
           ">Reading</h3>
           {/* @ts-expect-error Async Server Component */}
           <BookIsReading />
-          <p className="mb-3 text-sm lg:text-xs bg-zinc-50">And <DecoratedLink href="#reading">more</DecoratedLink>.</p>
+          <p className="mb-3 text-sm lg:text-xs bg-background">And <DecoratedLink href="#reading">more</DecoratedLink>.</p>
         </div>
         <div className="
             col-span-1 lg:self-end
@@ -113,7 +113,7 @@ export default function AboveFold() {
             opacity-0 animate-fade-in
           " style={{ animationDelay: "1000ms" }}>
           {/* .group allows us to style child */}
-          <p style={{ writingMode: 'vertical-rl' }} className="text-sm lg:text-xs bg-zinc-50 text-zinc-400 lg:float-right group vertical">{footnotes}</p>
+          <p style={{ writingMode: 'vertical-rl' }} className="text-sm lg:text-xs bg-background text-secondary lg:float-right group vertical">{footnotes}</p>
         </div>
       </div>
     </div >

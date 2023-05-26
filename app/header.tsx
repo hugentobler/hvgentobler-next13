@@ -1,10 +1,11 @@
 import { locations } from '#/data/locations'
 import Clock from './clock'
 import DecoratedLink from '#/components/decorated-link'
+import { ThemeToggle } from '#/components/theme-toggle'
 
 const nav: { [key: string]: string } = {
-  'About': '/about',
-  'Résumé': '/resume',
+  'About': '/',
+  'Résumé': '/blog',
   'Email': '/email'
 }
 
@@ -23,6 +24,7 @@ export default function Header() {
         <div className="
           hidden lg:block
           lg:col-span-3 lg:col-start-8
+          xl:col-span-3 xl:col-start-7
           ">
           <Clock />
           <CurrentLocation />
@@ -35,7 +37,7 @@ export default function Header() {
           <div className="float-right">
             <Clock className="lg:hidden" />
             <CurrentLocation className="lg:hidden" />
-            <DecoratedLink href="#">Dark</DecoratedLink>
+            <ThemeToggle />
           </div>
         </div>
       </div>
