@@ -9,17 +9,17 @@
     -webkit-tap-highlight-color: transparent;
     color-scheme: light;
     /* note: keep in sync with theme-color in theme-effect.ts */
-    --background: #fff;
-    --primary: #000;
-    --secondary: #ddd;
+    --background: #f5f5f5; /* neutral 100 */
+    --primary: #262626; /* neutral 800 */
+    --secondary: #a3a3a3;
   }
 
   :root.dark {
     color-scheme: dark;
-    /* note: must keep in sync with `theme-color` in `theme-effect.ts` */
-    --background: #000;
-    --primary: #fff;
-    --secondary: #aaa;
+    /* note: keep in sync with theme-color in theme-effect.ts */
+    --background: #171717; /* neutral 900 */
+    --primary: #e5e5e5; /* neutral 200 */
+    --secondary: #a3a3a3; /* neutral 400 */
   }
 
   :root.pause-transitions * {

@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={univers.variable}
+    <html lang="en" className={`${univers.variable} antialiased`}
       suppressHydrationWarning={true} // For changing theme classname
     >
       <head>

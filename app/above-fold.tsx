@@ -24,7 +24,7 @@ export default function AboveFold() {
     <>Fledgling ideas on cram school culture and painpoints: <DecoratedLink href="">This is not the education you’re looking for</DecoratedLink></>,
   ]
 
-  const footnotes = <>&sup1; <DecoratedLink target="_blank" href="https://www.vitsoe.com/us/voice/design-by-vitsoe">Design by Vitsœ</DecoratedLink>&nbsp;&nbsp;&sup2; <DecoratedLink target="_blank" href="https://www.eff.org/cyberspace-independence">Promise of the Internet</DecoratedLink></>
+  const footnotes = <>&sup1; <DecoratedLink target="_blank" href="https://www.vitsoe.com/us/voice/design-by-vitsoe" className="text-secondary hover:text-primary">Design by Vitsœ</DecoratedLink>&nbsp;&nbsp;&sup2; <DecoratedLink target="_blank" href="https://www.eff.org/cyberspace-independence" className="text-secondary hover:text-primary">Promise of the Internet</DecoratedLink></>
 
   return (
     <div className="flex items-center
