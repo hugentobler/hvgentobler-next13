@@ -1,5 +1,5 @@
-import AboveFold from './above-fold'
-import Locations from './locations'
+import AboveFold from '@/components/home-page/above-fold'
+import Locations from '@/components/home-page/locations'
 
 export default function Page() {
   return (

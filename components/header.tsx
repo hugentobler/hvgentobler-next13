@@ -1,7 +1,7 @@
-import { locations } from '#/data/locations'
+import { locations } from '@/data/locations'
 import Clock from './clock'
-import DecoratedLink from '#/components/decorated-link'
-import { ThemeToggle } from '#/components/theme-toggle'
+import DecoratedLink from '@/components/decorated-link'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 const nav: { [key: string]: string } = {
   'About': '/',

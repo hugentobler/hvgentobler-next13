@@ -1,9 +1,8 @@
 import './globals.css'
 
 import localFont from 'next/font/local'
-import { themeEffect } from '#/components/theme-effect'
-
-import Header from './header'
+import { themeEffect } from '@/components/theme-effect'
+import Header from '@/components/header'
 
 export const metadata = {
   title: 'Hugentobler',

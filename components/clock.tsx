@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { timezone } from '#/data/timezone'
+import { timezone } from '@/data/timezone'
 
 // Due to fact that Next13 renders everything server-side first, we
 // must brute force render the clock on client side only to prevent

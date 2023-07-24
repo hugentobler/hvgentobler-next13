@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-import BookIsReading from './book-is-reading'
-import DecoratedLink from '#/components/decorated-link'
+import BookIsReading from '@/components/book-is-reading'
+import DecoratedLink from '@/components/decorated-link'
 
 export default function AboveFold() {
 
@@ -37,7 +37,7 @@ export default function AboveFold() {
           col-span-8 col-start-3
           sm:col-span-5 sm:col-start-2
           md:col-span-3 md:col-start-2
-          lg:col-span-3 lg:col-start-1
+          lg:col-span-2 lg:col-start-1
           xl:col-span-2 xl:col-start-1">
           <Image
             alt=""
@@ -66,7 +66,7 @@ export default function AboveFold() {
           col-span-8 col-start-3
           sm:col-span-5 sm:col-start-2
           md:col-span-6 md:col-start-5
-          lg:col-span-4 lg:col-start-4
+          lg:col-span-4 lg:col-start-3
           xl:col-span-4 xl:col-start-3">
           <h3 className="
           text-lg lg:text-base font-light
@@ -88,7 +88,7 @@ export default function AboveFold() {
           col-span-8 col-start-3 pr-0
           sm:col-span-5 sm:col-start-7 sm:row-start-2 sm:pr-2
           md:col-span-6 md:col-start-5 md:pr-0
-          lg:col-span-3 lg:col-start-8 lg:row-start-1
+          lg:col-span-4 lg:col-start-7 lg:row-start-1
           xl:col-span-3 xl:col-start-7">
           <h3 className="
           text-lg lg:text-base font-light
