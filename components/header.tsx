@@ -23,7 +23,7 @@ export default function Header() {
           col-span-6 col-start-1" />
         <div className="
           hidden lg:block
-          lg:col-span-3 lg:col-start-8
+          lg:col-span-3 lg:col-start-7
           xl:col-span-3 xl:col-start-7
           ">
           <Clock />
