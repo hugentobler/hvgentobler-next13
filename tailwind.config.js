@@ -44,5 +44,6 @@ module.exports = {
       // like how dark: gets enabled
       addVariant('system', '.system &')
     }),
-  ],
+    require('@tailwindcss/typography')
+  ]
 }
