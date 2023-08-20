@@ -1,16 +1,18 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-
-import { MDXRemote } from 'next-mdx-remote/rsc'
-
 /*
   Individual blog markdown content sits in /blog in project root
   We generate static params by reading all the files in the /blog folder
   These slugs are used with a 'catch-all' dynamic segment, as the user-facing
-  blog urls don't include the 'blog' path
+  blog urls don't include the 'blog' path since it's a 'route group'
 */
 
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import { Metadata } from 'next'
+// We use next-mdx-remote instead of next/mdx so we can
+// put all the blog content outside of app folder
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import customComponents from '@/components/mdx'
 
 // Generate params for 'catch-all' dynamic segments
 // https://nextjs.org/docs/app/api-reference/functions/
@@ -19,15 +21,30 @@ export function generateStaticParams() {
   // Retrieve all mdx content from the /blog folder
   const dir = path.join('blog')
   const files = getFilesInFolder(dir)
-  console.log(files)
-  // Drop the '/blog' path since it's not actually used in the slug
+  // Drop the '/blog' path since it's not actually used in the user-facing slug
   return files.map(filename => ({
     slug: filename.replace('blog/', '').replace('.mdx', '').split('/')
   }))
 }
 
+// Set dynamic segments not included in generateStaticParams to 404
+// https://nextjs.org/docs/app/api-reference/file-conventions/
+// route-segment-config#dynamicparams
+export const dynamicParams = false
+
+// Generate dynamic metadata
+export async function generateMetadata({ params }: { params: { slug: string[] } }): Promise<Metadata> {
+  const { slug } = params
+  const { frontMatter } = getPost(slug.flat().join('/'))
+  return {
+    title: frontMatter.title,
+    description: frontMatter.description,
+  }
+}
+
+// Based on generated slugs for 'catch-all' segment
+// Read and handle content from file system
 export default function Page({ params }: { params: { slug: string[] } }) {
-  // Slugs generated for catch all segments are an array of strings
   const { slug } = params
   const {
     frontMatter,
@@ -35,14 +52,19 @@ export default function Page({ params }: { params: { slug: string[] } }) {
   } = getPost(slug.flat().join('/'))
 
   return (
-    <article className='prose prose-sm md:prose-base lg:prose-lg prose-slate !prose-invert mx-auto'>
+    <article className='prose prose-sm md:prose-base lg:prose-lg prose-slate mx-auto'>
       <h1>{frontMatter.title}</h1>
       {/* @ts-expect-error Server Component*/}
-      <MDXRemote source={content} />
+      <MDXRemote
+        source={content}
+        components={{ ...customComponents }}
+      />
     </article>
   )
 }
 
+// Read the filesystem and return the content
+// Handle the frontmatter with gray matter
 function getPost(slug: string) {
   const markdownFile = fs.readFileSync(path.join('blog', slug + '.mdx'), 'utf-8')
   const { data: frontMatter, content } = matter(markdownFile)
