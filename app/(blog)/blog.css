@@ -1,0 +1,22 @@
+/* Handle default scrollbar, style scrollbar */
+
+:root {
+    --scrollbar-background: transparent;
+    --thumb-background: var(--primary);
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: .25rem;
+    width: .25rem;
+}
+
+body {
+  scrollbar-width: auto;
+  scrollbar-color: var(--thumb-background) var(--scrollbar-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--thumb-background);
+  border-radius: .25rem;
+}

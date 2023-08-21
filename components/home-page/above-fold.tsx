@@ -89,7 +89,7 @@ export default function AboveFold() {
           sm:col-span-5 sm:col-start-7 sm:row-start-2 sm:pr-2
           md:col-span-6 md:col-start-5 md:pr-0
           lg:col-span-4 lg:col-start-7 lg:row-start-1
-          xl:col-span-3 xl:col-start-7">
+          xl:col-span-4 xl:col-start-7">
           <h3 className="
           text-lg lg:text-base font-light
           bg-background inline
@@ -112,7 +112,7 @@ export default function AboveFold() {
             row-start-2 lg:row-start-1
             opacity-0 animate-fade-in
           " style={{ animationDelay: "1000ms" }}>
-          {/* .group allows us to style child */}
+          {/* .group and .vertical allows us to style child */}
           <p style={{ writingMode: 'vertical-rl' }} className="text-sm lg:text-xs bg-background text-secondary lg:float-right group vertical">{footnotes}</p>
         </div>
       </div>

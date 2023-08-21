@@ -1,5 +1,5 @@
 import { locations } from '@/data/locations'
-import Clock from './clock'
+import Clock from '@/components/clock'
 import DecoratedLink from '@/components/decorated-link'
 import { ThemeToggle } from '@/components/theme-toggle'
 
@@ -9,11 +9,11 @@ const nav: { [key: string]: string } = {
   'Email': '/email'
 }
 
-export default function Header() {
+export default function HomeHeader() {
   return (
     <>
       <div className="
-        z-10 sticky top-1 my-4
+        z-10 sticky top-1 py-4
         grid grid-cols-11 gap-x-8 gap-y-3
         text-sm lg:text-xs font-light leading-none
         opacity-0 animate-fade-in

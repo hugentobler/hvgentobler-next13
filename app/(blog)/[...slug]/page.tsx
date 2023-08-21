@@ -8,11 +8,12 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import readingTime from 'reading-time'
 import { Metadata } from 'next'
 // We use next-mdx-remote instead of next/mdx so we can
 // put all the blog content outside of app folder
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import customComponents from '@/components/mdx'
+import customComponents from '@/components/blog/mdx'
 
 // Generate params for 'catch-all' dynamic segments
 // https://nextjs.org/docs/app/api-reference/functions/
@@ -47,19 +48,50 @@ export async function generateMetadata({ params }: { params: { slug: string[] } 
 export default function Page({ params }: { params: { slug: string[] } }) {
   const { slug } = params
   const {
+    content,
+    datePublished,
     frontMatter,
-    content
+    wordCount
   } = getPost(slug.flat().join('/'))
 
   return (
-    <article className='prose prose-sm md:prose-base lg:prose-lg prose-slate mx-auto'>
-      <h1>{frontMatter.title}</h1>
-      {/* @ts-expect-error Server Component*/}
-      <MDXRemote
-        source={content}
-        components={{ ...customComponents }}
-      />
-    </article>
+    <article className="
+       grid z-20 md:block grid-cols-11 gap-8
+       py-8 md:h-full md:overflow-x-scroll
+       overflow-y-scroll
+       md:[column-width:calc((99vw-6rem)/2)]
+       lg:[column-width:calc((99vw-8rem)/3)]
+       2xl:[column-width:calc(80rem/3)]
+       [orphans:1]
+      ">
+      <h1 className="
+        col-span-8 col-start-3 [column-span:all]
+        sm:col-span-9 sm:col-start-2
+        md:mb-10
+        bg-background text-5xl font-light tracking-tight
+        ">{frontMatter.title}</h1>
+      <div className="
+        col-start-1
+        row-start-2
+        lg:h-[calc(100%-5.5rem)]
+        opacity-0 animate-fade-in md:opacity-100 md:animate-none
+        " style={{ animationDelay: "1000ms" }}>
+        <p className="
+          [writing-mode:vertical-rl] md:[writing-mode:unset]
+          text-sm lg:text-xs bg-background text-secondary
+          ">{datePublished}&nbsp;&nbsp;&nbsp;{wordCount} words</p>
+      </div>
+      <div className="
+        col-span-8 col-start-3
+        sm:col-span-9 sm:col-start-2
+        first-letter:text-8xl first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:-mb-6 first-letter:font-extralight first-letter:leading-none">
+        {/* @ts-expect-error Server Component*/}
+        <MDXRemote
+          source={content}
+          components={{ ...customComponents }}
+        />
+      </div>
+    </article >
   )
 }
 
@@ -68,10 +100,14 @@ export default function Page({ params }: { params: { slug: string[] } }) {
 function getPost(slug: string) {
   const markdownFile = fs.readFileSync(path.join('blog', slug + '.mdx'), 'utf-8')
   const { data: frontMatter, content } = matter(markdownFile)
+  const wordCount = readingTime(content).words.toLocaleString()
+  const datePublished = new Date(frontMatter.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })
   return {
+    content,
+    datePublished,
     frontMatter,
     slug,
-    content
+    wordCount
   }
 }
 
