@@ -21,7 +21,7 @@ export default function DecoratedLink({
     hover:from-primary hover:to-primary
     hover:animate-underline group-[.vertical]:hover:animate-underline-vertical
     focus:outline-none focus:ring-1 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background
-    ${className}`
+    ${className ? className : ''}`
 
   if (href.charAt(0) == '#') {
     /* Looks like Next13 doesn't support scroll=false */

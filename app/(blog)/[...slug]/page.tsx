@@ -14,6 +14,8 @@ import { Metadata } from 'next'
 // put all the blog content outside of app folder
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import customComponents from '@/components/blog/mdx'
+// MDX plugins
+import remarkUnwrapImages from 'remark-unwrap-images'
 
 // Generate params for 'catch-all' dynamic segments
 // https://nextjs.org/docs/app/api-reference/functions/
@@ -57,8 +59,9 @@ export default function Page({ params }: { params: { slug: string[] } }) {
   return (
     <article className="
        grid z-20 md:block grid-cols-11 gap-8
-       py-8 md:h-full md:overflow-x-scroll
-       overflow-y-scroll
+       py-8 md:h-full
+       overflow-x-hidden overflow-y-scroll
+       md:overflow-x-scroll md:overflow-y-hidden
        md:[column-width:calc((99vw-6rem)/2)]
        lg:[column-width:calc((99vw-8rem)/3)]
        2xl:[column-width:calc(80rem/3)]
@@ -84,11 +87,17 @@ export default function Page({ params }: { params: { slug: string[] } }) {
       <div className="
         col-span-8 col-start-3
         sm:col-span-9 sm:col-start-2
-        first-letter:text-8xl first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:-mb-6 first-letter:font-extralight first-letter:leading-none">
+        first-letter:text-8xl first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:-mb-6 first-letter:font-extralight first-letter:leading-none
+      ">
         {/* @ts-expect-error Server Component*/}
         <MDXRemote
           source={content}
           components={{ ...customComponents }}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkUnwrapImages]
+            }
+          }}
         />
       </div>
     </article >

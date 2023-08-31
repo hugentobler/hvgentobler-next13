@@ -12,11 +12,19 @@
 }
 
 body {
-  scrollbar-width: auto;
-  scrollbar-color: var(--thumb-background) var(--scrollbar-background);
+    scrollbar-width: auto;
+    scrollbar-color: var(--thumb-background) var(--scrollbar-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--thumb-background);
-  border-radius: .25rem;
+    background: var(--thumb-background);
+    border-radius: .25rem;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-background);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--scrollbar-background);
 }
