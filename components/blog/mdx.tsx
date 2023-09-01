@@ -2,6 +2,8 @@
 // Inserted via mdx-remote
 
 import Image from 'next/image'
+import DecoratedLink from '@/components/decorated-link'
+import ImageProperties from '@/components/blog/image-handler'
 
 const customComponents = {
   h2: (props: any) => (
@@ -20,7 +22,7 @@ const customComponents = {
     </p>
   ),
   ol: (props: any) => (
-    <ol {...props} className="bg-background list-decimal list-inside">
+    <ol {...props} className="bg-background list-decimal list-inside break-inside-avoid-column">
       {props.children}
     </ol>
   ),
@@ -29,19 +31,27 @@ const customComponents = {
       {props.children}
     </li>
   ),
-  img: (props: any) => (
-    <figure className="space-y-3 my-6">
-      <Image
-        alt={props.alt}
-        className="w-full h-auto grayscale hover:cursor-pointer hover:filter-none"
-        height="200"
-        priority={false}
-        src={props.src}
-        width="300"
-      />
-      <figcaption className="bg-background text-sm font-light tracking-tight text-center">{props.alt}</figcaption>
-    </figure>
-  )
+  a: (props: any) => (
+    <DecoratedLink href={props.href} target="_blank">
+      {props.children}
+    </DecoratedLink>
+  ),
+  img: async function(props: any) {
+    const { base64, height, width } = await ImageProperties(props.src)
+    return (
+      <figure className="space-y-3 my-6 break-inside-avoid-column">
+        <Image
+          alt={props.alt}
+          className="w-full h-auto grayscale hover:cursor-pointer hover:filter-none"
+          height={height}
+          placeholder={`data:image/${base64}`}
+          src={props.src}
+          width={width}
+        />
+        <figcaption className="bg-background text-sm font-light tracking-tight text-center">{props.alt}</figcaption>
+      </figure>
+    )
+  },
 }
 
 export default customComponents
