@@ -4,6 +4,7 @@
 import Image from 'next/image'
 import DecoratedLink from '@/components/decorated-link'
 import ImageProperties from '@/components/blog/image-handler'
+import { ReactNode, FC } from 'react'
 
 const customComponents = {
   h2: (props: any) => (
@@ -46,7 +47,7 @@ const customComponents = {
       {props.children}
     </blockquote>
   ),
-  img: async function(props: any) {
+  img: rsc(async (props: any) => {
     const { base64, height, width } = await ImageProperties(props.src)
     return (
       <figure className="space-y-3 my-6 break-inside-avoid-column">
@@ -61,7 +62,17 @@ const customComponents = {
         <figcaption className="bg-background text-sm font-light tracking-tight text-center">{props.alt}</figcaption>
       </figure>
     )
-  },
+  }),
 }
 
 export default customComponents
+
+/*
+  mdx-remote/rsc components currently don't accept async components
+  for example the image component needs to get the placeholder
+  in order to generate a typesafe component, we use the following function
+  reference: https://github.com/DefinitelyTyped/DefinitelyTyped/pull/65003#issuecomment-1497205144
+*/
+function rsc<P>(fn: (props: P) => ReactNode | Promise<ReactNode>): FC<P> {
+  return fn as any
+}

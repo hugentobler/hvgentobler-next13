@@ -89,7 +89,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         sm:col-span-9 sm:col-start-2
         first-letter:text-8xl first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:-mb-6 first-letter:font-extralight first-letter:leading-none
       ">
-        {/* @ts-expect-error Server Component*/}
+        {/* @ts-expect-error server component */}
         <MDXRemote
           source={content}
           components={{ ...customComponents }}
