@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       animation: {
         'fade-in': 'fadeIn 150ms ease-out forwards',
+        'reveal': 'reveal 1ms',
         'underline': 'underLine 150ms ease-out',
         'underline-vertical': 'underLineVertical 150ms ease-out',
       },
@@ -25,7 +26,11 @@ module.exports = {
       keyframes: {
         fadeIn: {
           '0%': { opacity: 0 },
-          '100%': { opacity: 100 }
+          '100%': { opacity: 1 }
+        },
+        reveal: {
+          '0%': { opacity: 0 },
+          '2%': { opacity: 1 }
         },
         underLine: {
           '0%': { backgroundSize: '0 0' },

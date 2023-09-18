@@ -58,17 +58,28 @@ export default function Page({ params }: { params: { slug: string[] } }) {
 
   return (
     <article className="
-       grid z-20 md:block grid-cols-11 gap-8
-       py-8 md:h-full
+       grid md:block grid-cols-11 gap-8
+       py-16 md:py-8 h-full
        overflow-x-hidden overflow-y-scroll
        md:overflow-x-scroll md:overflow-y-hidden
+       relative scroll-timeline-y
        md:[column-width:calc((99vw-6rem)/2)]
        lg:[column-width:calc((99vw-8rem)/3)]
        2xl:[column-width:calc(80rem/3)]
        [orphans:1]
       ">
+      <div className="
+        sticky inset-x-0 -top-16 h-4
+        row-start-1 col-span-12 bg-neutral-100/75 backdrop-blur border-solid border-b border-black/20
+        w-full
+        flex justify-center animate-reveal animate-scroll-timeline">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" width="20">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+      </div>
       <h1 className="
         col-span-8 col-start-3 [column-span:all]
+        row-start-1
         sm:col-span-9 sm:col-start-2
         md:mb-10
         bg-background text-5xl font-light tracking-tight
@@ -77,11 +88,12 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         col-start-1
         row-start-2
         lg:h-[calc(100%-5.5rem)]
+        md:mb-6 lg:mb-0
         opacity-0 animate-fade-in md:opacity-100 md:animate-none
         " style={{ animationDelay: "1000ms" }}>
         <p className="
           [writing-mode:vertical-rl] md:[writing-mode:unset]
-          text-sm lg:text-xs bg-background text-secondary
+          text-sm lg:text-xs font-light bg-background text-secondary
           ">{datePublished}&nbsp;&nbsp;&nbsp;{wordCount} words</p>
       </div>
       <div className="
