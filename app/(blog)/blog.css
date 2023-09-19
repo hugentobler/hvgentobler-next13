@@ -1,5 +1,3 @@
-@tailwind utilities;
-
 /* Handle default scrollbar, style scrollbar */
 
 :root {
@@ -35,13 +33,11 @@ body {
 /* Enable scroll timeline animations */
 /* https://twitter.com/shuding_/status/1698176794124578923 */
 
-@layer utilities {
-    .scroll-timeline-y {
-        scroll-timeline: --scroll-timeline y;
-        scroll-timeline: --scroll-timeline vertical;
-    }
+.scroll-timeline-y {
+    scroll-timeline: --scroll-timeline y;
+    scroll-timeline: --scroll-timeline vertical;
+}
 
-    .animate-scroll-timeline {
-        animation-timeline: --scroll-timeline;
-    }
+.animate-scroll-timeline {
+    animation-timeline: --scroll-timeline;
 }

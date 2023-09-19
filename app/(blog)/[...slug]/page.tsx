@@ -85,7 +85,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         " style={{ animationDelay: "1000ms" }}>
         <p className="
           [writing-mode:vertical-rl] md:[writing-mode:unset]
-          text-sm lg:text-xs font-light bg-background text-secondary
+          text-sm lg:text-xs font-light bg-background
           ">{datePublished}&nbsp;&nbsp;&nbsp;{wordCount} words</p>
       </div>
       <div className="
@@ -108,7 +108,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         sticky z-30 inset-x-0 -top-px h-4 w-full
         row-start-1 col-start-1 col-span-11 backdrop-blur bg-neutral-100/75 dark:bg-neutral-800/75
         flex justify-center animate-reveal animate-scroll-timeline">
-        <a href="#top" className="w-full">
+        <a href="#top" aria-label="top" className="w-full">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="M213.66 165.66a8 8 0 0 1-11.32 0L128 91.31l-74.34 74.35a8 8 0 0 1-11.32-11.32l80-80a8 8 0 0 1 11.32 0l80 80a8 8 0 0 1 0 11.32Z"></path></svg>
         </a>
       </div>
@@ -116,7 +116,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         sticky z-30 inset-x-0 -bottom-px h-4 w-full
         row-start-3 col-start-1 col-span-11 backdrop-blur bg-neutral-100/75 dark:bg-neutral-800/75
         flex justify-center animate-reveal animate-scroll-timeline [animation-direction:reverse]">
-        <a href="#bottom" className="w-full">
+        <a href="#bottom" aria-label="bottom" className="w-full">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="m213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"></path></svg>
         </a>
       </div>
