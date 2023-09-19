@@ -19,7 +19,7 @@ export default function AboveFold() {
   ]
 
   const artifacts = [
-    <>Essay on my time at Bowtie, leading product and design: <DecoratedLink href="">12 months of agile product development</DecoratedLink></>,
+    <>Essay on my time at Bowtie, leading product and design: <DecoratedLink href="/2022/bowtie">12 months of agile product development</DecoratedLink></>,
     <>Travelogue of a monthlong pandemic roadtrip: <DecoratedLink href="https://google.com">Thirty Taiwan vanlife days</DecoratedLink></>,
     <>Fledgling ideas on cram school culture and painpoints: <DecoratedLink href="">This is not the education you’re looking for</DecoratedLink></>,
   ]

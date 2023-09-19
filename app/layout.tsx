@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${univers.variable} antialiased`}
+    <html lang="en" className={`${univers.variable} antialiased scroll-smooth`}
       suppressHydrationWarning={true} // For changing theme classname
     >
       <head>
@@ -35,7 +35,9 @@ export default function RootLayout({
         />
       </head>
       <body className="
-        bg-background text-primary">
+        bg-background text-primary
+        selection:bg-secondary selection:text-background dark:selection:bg-primary
+        ">
         <div className="max-w-screen-2xl mx-auto px-2 md:px-8">
           {children}
         </div>

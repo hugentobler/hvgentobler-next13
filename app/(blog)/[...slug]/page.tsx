@@ -58,35 +58,27 @@ export default function Page({ params }: { params: { slug: string[] } }) {
 
   return (
     <article className="
-       grid md:block grid-cols-11 gap-8
-       py-16 md:py-8 h-full
+       grid md:block grid-cols-11 gap-y-8 md:gap-x-8
+       md:py-8 h-full
        overflow-x-hidden overflow-y-scroll
        md:overflow-x-scroll md:overflow-y-hidden
+       scroll-smooth md:scroll-auto
        relative scroll-timeline-y
        md:[column-width:calc((99vw-6rem)/2)]
        lg:[column-width:calc((99vw-8rem)/3)]
        2xl:[column-width:calc(80rem/3)]
        [orphans:1]
       ">
-      <div className="
-        sticky inset-x-0 -top-16 h-4
-        row-start-1 col-span-12 bg-neutral-100/75 backdrop-blur border-solid border-b border-black/20
-        w-full
-        flex justify-center animate-reveal animate-scroll-timeline">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" width="20">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-        </svg>
-      </div>
+      <div id="top" className="row-start-1"></div>
       <h1 className="
         col-span-8 col-start-3 [column-span:all]
         row-start-1
-        sm:col-span-9 sm:col-start-2
-        md:mb-10
+        mt-16 md:my-10
         bg-background text-5xl font-light tracking-tight
         ">{frontMatter.title}</h1>
       <div className="
-        col-start-1
-        row-start-2
+        col-span-1 col-start-1 row-start-2
+        sm:col-start-2
         lg:h-[calc(100%-5.5rem)]
         md:mb-6 lg:mb-0
         opacity-0 animate-fade-in md:opacity-100 md:animate-none
@@ -97,8 +89,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
           ">{datePublished}&nbsp;&nbsp;&nbsp;{wordCount} words</p>
       </div>
       <div className="
-        col-span-8 col-start-3
-        sm:col-span-9 sm:col-start-2
+        col-span-8 col-start-3 row-start-2
         first-letter:text-8xl first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:-mb-6 first-letter:font-extralight first-letter:leading-none
       ">
         {/* @ts-expect-error server component */}
@@ -111,6 +102,23 @@ export default function Page({ params }: { params: { slug: string[] } }) {
             }
           }}
         />
+        <div id="bottom"></div>
+      </div>
+      <div className="
+        sticky z-30 inset-x-0 -top-px h-4 w-full
+        row-start-1 col-start-1 col-span-11 backdrop-blur bg-neutral-100/75 dark:bg-neutral-800/75
+        flex justify-center animate-reveal animate-scroll-timeline">
+        <a href="#top" className="w-full">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="M213.66 165.66a8 8 0 0 1-11.32 0L128 91.31l-74.34 74.35a8 8 0 0 1-11.32-11.32l80-80a8 8 0 0 1 11.32 0l80 80a8 8 0 0 1 0 11.32Z"></path></svg>
+        </a>
+      </div>
+      <div className="
+        sticky z-30 inset-x-0 -bottom-px h-4 w-full
+        row-start-3 col-start-1 col-span-11 backdrop-blur bg-neutral-100/75 dark:bg-neutral-800/75
+        flex justify-center animate-reveal animate-scroll-timeline [animation-direction:reverse]">
+        <a href="#bottom" className="w-full">
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="m213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"></path></svg>
+        </a>
       </div>
     </article >
   )
