@@ -29,15 +29,3 @@ body {
 ::-webkit-scrollbar-corner {
     background: var(--scrollbar-background);
 }
-
-/* Enable scroll timeline animations */
-/* https://twitter.com/shuding_/status/1698176794124578923 */
-
-.scroll-timeline-y {
-    scroll-timeline: --scroll-timeline y;
-    scroll-timeline: --scroll-timeline vertical;
-}
-
-.animate-scroll-timeline {
-    animation-timeline: --scroll-timeline;
-}

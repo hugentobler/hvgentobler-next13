@@ -1,4 +1,3 @@
-'use client'
 
 import Link from 'next/link'
 
@@ -25,15 +24,8 @@ export default function DecoratedLink({
     focus:outline-none focus:ring-1 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background
     ${className ? className : ''}`
 
-  if (href.charAt(0) == '#') {
-    /* Looks like Next13 doesn't support scroll=false */
-    return (
-      <a href={href} className={styles} onClick={onClick} >
-        {children}
-      </a>
-    )
-  } else return (
-    <Link href={href} target={target} className={styles} onClick={onClick} {...props}>
+  return (
+    <Link href={href} scroll={false} target={target} className={styles} onClick={onClick} {...props}>
       {children}
     </Link>
   )

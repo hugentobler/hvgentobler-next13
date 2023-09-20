@@ -8,26 +8,28 @@ import DecoratedLink from './decorated-link'
 // but in this version, we don't, every session starts with client preference
 
 export function ThemeToggle() {
-  // color scheme preference, user or system
-  const [preference, setPreference] = useState<undefined | null | string>(
-    null
-  )
+  // color scheme preference, null implies 'auto'
+  const [preference, setPreference] = useState<undefined | null | string>(null)
   // color scheme to show
   const [currentTheme, setCurrentTheme] = useState<null | string>(null)
+  // system preference
+  const [systemTheme, setSystemTheme] = useState<null | string>(null)
 
   // when device preference changes, handle update theme
   const onMediaChange = useCallback(() => {
-    setCurrentTheme(themeEffect())
+    const current = themeEffect()
+    setCurrentTheme(current)
   }, [])
 
   useEffect(() => {
-    // on load, check if there's stored preference, reset preference
-    localStorage.removeItem('theme')
+    // update theme preference
     setPreference(localStorage.getItem('theme'))
     // check the loaded theme, set theme
     setCurrentTheme(themeEffect())
     // set and cleanup listener on device preferred color scheme
+    // save system media to state
     const matchMedia = window.matchMedia('(prefers-color-scheme: dark)')
+    setSystemTheme(matchMedia.matches ? 'dark' : 'light')
     matchMedia.addEventListener('change', onMediaChange)
     return () => matchMedia.removeEventListener('change', onMediaChange)
     // when device preference changes, update all
@@ -44,7 +46,7 @@ export function ThemeToggle() {
   )
   // whenever device preference changes, update theme
   useEffect(() => {
-    console.log('preference changed')
+    // console.log(`set ${themeEffect()} theme`)
     setCurrentTheme(themeEffect())
   }, [preference])
 
@@ -55,16 +57,29 @@ export function ThemeToggle() {
 
   return (
     <DecoratedLink
+      className="capitalize"
       href="#"
       onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault()
-        const newPreference: string | null =
+        let newPreference: string | null =
           currentTheme === 'dark' ? 'light' : 'dark'
-        localStorage.setItem('theme', newPreference)
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        if (preference !== null && systemTheme === currentTheme) {
+          newPreference = null
+          localStorage.removeItem('theme')
+        } else {
+          localStorage.setItem('theme', newPreference);
+        }
         setPreference(newPreference)
       }}
     >
-      {currentTheme === 'dark' ? 'Light' : 'Dark'}
+      {
+        preference == null
+          ? currentTheme == 'dark' ? 'light' : 'dark'
+          : systemTheme == currentTheme
+            ? 'auto'
+            : currentTheme == 'dark' ? 'light' : 'dark'
+      }
     </DecoratedLink>
   )
 }

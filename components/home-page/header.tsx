@@ -41,13 +41,13 @@ export default function HomeHeader() {
           </div>
         </div>
       </div>
-      <div className="
+      {/* <div className="
         z-50 fixed left-1/2 -translate-x-1/2 bottom-4 lg:hidden
         p-2
         bg-zinc-50 border border-solid border-zinc-400
         ">
         <span>Menu</span>
-      </div>
+      </div> */}
       {/* <div className="
         z-50 fixed inset-x-0 bottom-0 lg:hidden
         bg-white opacity-0 animate-fade-in

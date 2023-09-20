@@ -58,12 +58,10 @@ export default function Page({ params }: { params: { slug: string[] } }) {
 
   return (
     <article className="
-       grid md:block grid-cols-11 gap-y-8 md:gap-x-8
-       md:py-8 h-full
-       overflow-x-hidden overflow-y-scroll
-       md:overflow-x-scroll md:overflow-y-hidden
-       scroll-smooth md:scroll-auto
-       relative scroll-timeline-y
+       relative grid md:block grid-cols-11 gap-y-8 md:gap-x-8
+       md:py-8 h-full w-full
+       overflow-x-hidden overflow-y-scroll md:overflow-x-scroll md:overflow-y-hidden
+       scroll-smooth md:scroll-auto scroll-timeline-y md:scroll-timeline-x
        md:[column-width:calc((99vw-6rem)/2)]
        lg:[column-width:calc((99vw-8rem)/3)]
        2xl:[column-width:calc(80rem/3)]
@@ -79,7 +77,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
       <div className="
         col-span-1 col-start-1 row-start-2
         sm:col-start-2
-        lg:h-[calc(100%-5.5rem)]
+        lg:h-[calc(100%-8rem)]
         md:mb-6 lg:mb-0
         opacity-0 animate-fade-in md:opacity-100 md:animate-none
         " style={{ animationDelay: "1000ms" }}>
@@ -105,7 +103,8 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         <div id="bottom"></div>
       </div>
       <div className="
-        sticky z-30 inset-x-0 -top-px h-4 w-full
+        sticky z-30 h-4 w-full md:hidden
+        inset-x-0 -top-px
         row-start-1 col-start-1 col-span-11 backdrop-blur bg-neutral-100/75 dark:bg-neutral-800/75
         flex justify-center animate-reveal animate-scroll-timeline">
         <a href="#top" aria-label="top" className="w-full">
@@ -113,7 +112,8 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         </a>
       </div>
       <div className="
-        sticky z-30 inset-x-0 -bottom-px h-4 w-full
+        sticky z-30 h-4 w-full md:hidden
+        inset-x-0 -bottom-px
         row-start-3 col-start-1 col-span-11 backdrop-blur bg-neutral-100/75 dark:bg-neutral-800/75
         flex justify-center animate-reveal animate-scroll-timeline [animation-direction:reverse]">
         <a href="#bottom" aria-label="bottom" className="w-full">
