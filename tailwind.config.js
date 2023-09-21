@@ -10,8 +10,8 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'fade-in': 'fadeIn 150ms ease-out forwards',
-        'reveal': 'reveal 1ms',
+        'fade-in': 'fadeIn 150ms ease-out 1000ms forwards',
+        'reveal': 'reveal 1ms ease',
         'underline': 'underLine 150ms ease-out',
         'underline-vertical': 'underLineVertical 150ms ease-out',
       },

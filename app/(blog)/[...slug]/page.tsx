@@ -80,7 +80,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         lg:h-[calc(100%-8rem)]
         md:mb-6 lg:mb-0
         opacity-0 animate-fade-in md:opacity-100 md:animate-none
-        " style={{ animationDelay: "1000ms" }}>
+        ">
         <p className="
           [writing-mode:vertical-rl] md:[writing-mode:unset]
           text-sm lg:text-xs font-light bg-background
@@ -104,19 +104,25 @@ export default function Page({ params }: { params: { slug: string[] } }) {
       </div>
       <div className="
         sticky z-30 h-4 w-full md:hidden
-        inset-x-0 -top-px
-        row-start-1 col-start-1 col-span-11 backdrop-blur bg-neutral-100/75 dark:bg-neutral-900/75
-        flex justify-center animate-reveal animate-scroll-timeline">
-        <a href="#top" aria-label="top" className="w-full">
+        inset-x-0 -top-px backdrop-blur
+        row-start-1 col-start-1 col-span-11
+        flex justify-center opacity-0 animate-fade-in">
+        <a href="#top" aria-label="top" className="
+          w-full bg-neutral-100/75 dark:bg-neutral-900/75
+          animate-reveal animate-scroll-timeline
+        ">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="M213.66 165.66a8 8 0 0 1-11.32 0L128 91.31l-74.34 74.35a8 8 0 0 1-11.32-11.32l80-80a8 8 0 0 1 11.32 0l80 80a8 8 0 0 1 0 11.32Z"></path></svg>
         </a>
       </div>
       <div className="
         sticky z-30 h-4 w-full md:hidden
-        inset-x-0 -bottom-px
-        row-start-3 col-start-1 col-span-11 backdrop-blur bg-neutral-100/75 dark:bg-neutral-900/75
-        flex justify-center animate-reveal animate-scroll-timeline [animation-direction:reverse]">
-        <a href="#bottom" aria-label="bottom" className="w-full">
+        inset-x-0 -bottom-px backdrop-blur
+        row-start-3 col-start-1 col-span-11
+        flex justify-center opacity-0 animate-fade-in">
+        <a href="#bottom" aria-label="bottom" className="
+          w-full bg-neutral-100/75 dark:bg-neutral-900/75
+          animate-reveal animate-scroll-timeline  [animation-direction:reverse]
+        ">
           <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256"><path fill="currentColor" d="m213.66 101.66l-80 80a8 8 0 0 1-11.32 0l-80-80a8 8 0 0 1 11.32-11.32L128 164.69l74.34-74.35a8 8 0 0 1 11.32 11.32Z"></path></svg>
         </a>
       </div>
