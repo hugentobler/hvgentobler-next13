@@ -6,7 +6,6 @@ export default function ScrollHandler() {
   useEffect(() => {
     // Get the scrollable event
     const article = document.querySelector('article')
-
     // Handle scroll events
     const handleWheel = (e: WheelEvent) => {
       // Some browsers scroll horizontally when shift key is held down

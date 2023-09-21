@@ -11,7 +11,7 @@ export default function BlogLayout({
     <>
       <BlogHeader />
       <div className="flex items-center z-20 relative -translate-y-2
-        h-[calc(100vh-3rem)] h-[calc(100vh-env(safe-area-inset-bottom)-3rem)]
+        h-[calc(100svh-3rem)]
         md:min-h-[560px]
         ">
         {children}
