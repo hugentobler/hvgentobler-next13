@@ -1,0 +1,66 @@
+import { ImageResponse } from 'next/server'
+
+export const contentType = 'image/png'
+export const runtime = 'edge'
+
+export async function GET(
+  request: Request,
+  { params }: { params: { slug: string } }
+) {
+  const slug = params.slug
+  const fontData = await fetch(
+    new URL('../../../public/UniversLTStd-Cn.woff', import.meta.url)
+  ).then(res => res.arrayBuffer())
+
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          alignItems: 'center',
+          backgroundColor: '#171717',
+          color: '#e5e5e5',
+          display: 'flex',
+          flexShrink: 0,
+          flexDirection: 'column',
+          fontFamily: '"Univers"',
+          fontSize: 64,
+          height: '100%',
+          justifyContent: 'center',
+          lineHeight: 1.25,
+          letterSpacing: '-0.025em',
+          width: '100%',
+        }}
+      >
+        <div style={{
+          alignItems: 'flex-start',
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 32,
+          width: '100%',
+        }}>
+          <div style={{
+            display: 'block',
+            lineClamp: 3,
+            marginLeft: 96,
+          }}>
+            {slug[0]}
+          </div>
+          <div style={{
+            color: '#737373',
+            display: 'block',
+            marginRight: 96,
+          }}>Christopher Hugentobler</div>
+        </div>
+      </div>
+    ),
+    {
+      fonts: [
+        {
+          name: 'Univers',
+          data: fontData,
+          style: 'normal'
+        }
+      ]
+    }
+  )
+}

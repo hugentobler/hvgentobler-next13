@@ -5,10 +5,7 @@
   blog urls don't include the 'blog' path since it's a 'route group'
 */
 
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import readingTime from 'reading-time'
+import { getFilesInFolder, getPost } from '../import-content'
 import { Metadata } from 'next'
 // We use next-mdx-remote instead of next/mdx so we can
 // put all the blog content outside of app folder
@@ -22,8 +19,7 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 // generate-static-params#catch-all-dynamic-segment
 export function generateStaticParams() {
   // Retrieve all mdx content from the /blog folder
-  const dir = path.join('blog')
-  const files = getFilesInFolder(dir)
+  const files = getFilesInFolder('blog')
   // Drop the '/blog' path since it's not actually used in the user-facing slug
   return files.map(filename => ({
     slug: filename.replace('blog/', '').replace('.mdx', '').split('/')
@@ -40,8 +36,24 @@ export async function generateMetadata({ params }: { params: { slug: string[] } 
   const { slug } = params
   const { frontMatter } = getPost(slug.flat().join('/'))
   return {
+    metadataBase: new URL('https://hvgentobler.com'),
     title: frontMatter.title,
     description: frontMatter.description,
+    openGraph: {
+      title: frontMatter.title,
+      description: frontMatter.description,
+      url: 'https://hvgentobler.com',
+      siteName: 'Christopher Hugentobler',
+      images: [
+        {
+          height: 630,
+          url: `/og/${frontMatter.title}`,
+          width: 1200
+        }
+      ],
+      locale: 'en_US',
+      type: 'website'
+    }
   }
 }
 
@@ -55,6 +67,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
     frontMatter,
     wordCount
   } = getPost(slug.flat().join('/'))
+  const jsonLd = getJsonLd(frontMatter, slug.flat().join('/'))
 
   return (
     <article className="
@@ -67,6 +80,10 @@ export default function Page({ params }: { params: { slug: string[] } }) {
        2xl:[column-width:calc(80rem/3)]
        [orphans:1]
       ">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div id="top" className="row-start-1"></div>
       <h1 className="
         col-span-8 col-start-3 [column-span:all]
@@ -130,37 +147,31 @@ export default function Page({ params }: { params: { slug: string[] } }) {
   )
 }
 
-// Read the filesystem and return the content
-// Handle the frontmatter with gray matter
-function getPost(slug: string) {
-  const markdownFile = fs.readFileSync(path.join('blog', slug + '.mdx'), 'utf-8')
-  const { data: frontMatter, content } = matter(markdownFile)
-  const wordCount = readingTime(content).words.toLocaleString()
-  const datePublished = new Date(frontMatter.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })
-  return {
-    content,
-    datePublished,
-    frontMatter,
-    slug,
-    wordCount
-  }
-}
-
-// Helper function to recursively read all files in folder
-function getFilesInFolder(dir: string, files: string[] = []) {
-  // Get an array of all files and directories in the passed directory using fs.readdirSync
-  const fileList = fs.readdirSync(dir)
-  // Create the full path of the file/directory by concatenating the passed directory and file/directory name
-  for (const file of fileList) {
-    const name = `${dir}/${file}`
-    // Check if the current file/directory is a directory using fs.statSync
-    if (fs.statSync(name).isDirectory()) {
-      // If it is a directory, recursively call the getFiles function with the directory path and the files array
-      getFilesInFolder(name, files)
-    } else {
-      // If it is a file, push the full path to the files array
-      files.push(name)
+const getJsonLd = (frontMatter: any, path: string) => (
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": frontMatter.title,
+    "image": `https://hvgentobler.com/og/${frontMatter.title}`,
+    "url": `https://hvgentobler.com/${path}`,
+    "datePublished": new Date(frontMatter.datePublished),
+    "dateCreated": new Date(frontMatter.datePublished),
+    "dateModified": new Date(frontMatter.dateModified),
+    "description": frontMatter.description,
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Person",
+      "name": "Christopher Hugentobler",
+      "url": "https://hvgentobler.com/"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Christopher Hugentobler",
+      "url": "https://hvgentobler.com/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hvgentobler.com"
     }
   }
-  return files
-}
+)

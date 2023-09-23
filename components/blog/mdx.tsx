@@ -8,12 +8,12 @@ import { ReactNode, FC } from 'react'
 
 const customComponents = {
   h2: (props: any) => (
-    <h2 {...props} className="bg-background mt-6 mb-3 text-3xl font-light tracking-tight leading-tight">
+    <h2 {...props} className="bg-background mt-6 mb-3 text-3xl font-light tracking-tight leading-tight break-inside-avoid break-after-avoid">
       {props.children}
     </h2>
   ),
   h3: (props: any) => (
-    <h3 {...props} className="bg-background mt-6 mb-3 text-xl font-light tracking-tight leading-tight break-after-avoid">
+    <h3 {...props} className="bg-background mt-6 mb-3 text-xl font-light tracking-tight leading-tight break-inside-avoid break-after-avoid">
       {props.children}
     </h3>
   ),
@@ -43,7 +43,7 @@ const customComponents = {
     </DecoratedLink>
   ),
   blockquote: (props: any) => (
-    <blockquote className="bg-background [&_p]:text-2xl [&_p]:italic font-light tracking-tight [&_p]:leading-7 my-6">
+    <blockquote className="bg-background [&_p]:text-2xl [&_p]:italic font-light tracking-tight [&_p]:leading-7 my-6 break-inside-avoid">
       {props.children}
     </blockquote>
   ),
