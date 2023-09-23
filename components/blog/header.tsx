@@ -11,22 +11,17 @@ export default function BlogHeader() {
   return (
     <div className="
         z-10 sticky top-1 py-4
-        grid grid-cols-11 lg:grid-cols-3 gap-8
+        grid grid-cols-11
         text-sm lg:text-xs font-light leading-none
-        opacity-0 animate-fade-in
-        "
-      style={{ animationDelay: "1000ms" }}>
+        opacity-0 animate-fade-in [animation-delay:1000ms]
+        ">
       <Nav className="
-        whitespace-nowrap
-        space-x-3 col-span-4 col-start-1
+        space-x-3 whitespace-nowrap col-start-1 sm:col-start-2 md:col-start-1
         " />
-      <div className="hidden"></div>
-      <div className="col-span-7 col-start-5 text-right">
+      <div className="whitespace-nowrap justify-self-end col-end-12 sm:col-end-11 md:col-end-12">
         <Clock />
         <CurrentLocation />
-        <div className="inline md:float-right">
-          <ThemeToggle />
-        </div>
+        <div className="inline"><ThemeToggle /></div>
       </div>
     </div>
   )

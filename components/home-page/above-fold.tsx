@@ -24,7 +24,7 @@ export default function AboveFold() {
     <>Fledgling ideas on cram school culture and painpoints: <DecoratedLink href="">This is not the education you’re looking for</DecoratedLink></>,
   ]
 
-  const footnotes = <>&sup1; <DecoratedLink target="_blank" href="https://www.vitsoe.com/us/voice/design-by-vitsoe" className="text-secondary hover:text-primary">Design by Vitsœ</DecoratedLink>&nbsp;&nbsp;&sup2; <DecoratedLink target="_blank" href="https://www.eff.org/cyberspace-independence" className="text-secondary hover:text-primary">Promise of the Internet</DecoratedLink></>
+  const footnotes = <>&sup1; <DecoratedLink target="_blank" href="https://www.vitsoe.com/us/voice/design-by-vitsoe">Design by Vitsœ</DecoratedLink>&nbsp;&nbsp;&sup2; <DecoratedLink target="_blank" href="https://www.eff.org/cyberspace-independence">Promise of the Internet</DecoratedLink></>
 
   return (
     <div className="flex items-center
@@ -33,7 +33,7 @@ export default function AboveFold() {
       grid z-20 lg:-translate-y-4
       grid-cols-11 gap-x-8 gap-y-8
       ">
-        <div className="opacity-0 animate-fade-in
+        <div className="
           col-span-8 col-start-3
           sm:col-span-5 sm:col-start-2
           md:col-span-3 md:col-start-2
@@ -62,7 +62,7 @@ export default function AboveFold() {
             <p className="text-sm lg:text-xs bg-background">{oneLiner}</p>
           </div>
         </div>
-        <div className="opacity-0 animate-fade-in
+        <div className="
           col-span-8 col-start-3
           sm:col-span-5 sm:col-start-2
           md:col-span-6 md:col-start-5
@@ -84,7 +84,7 @@ export default function AboveFold() {
             <p key={i} className="mb-3 last:mb-0 text-sm lg:text-xs bg-background">{e}</p>
           ))}
         </div>
-        <div className="opacity-0 animate-fade-in
+        <div className="
           col-span-8 col-start-3 pr-0
           sm:col-span-5 sm:col-start-7 sm:row-start-2 sm:pr-2
           md:col-span-6 md:col-start-5 md:pr-0
@@ -110,10 +110,10 @@ export default function AboveFold() {
             col-span-1 lg:self-end
             col-start-1 lg:col-start-11
             row-start-2 lg:row-start-1
-            opacity-0 animate-fade-in
-          " style={{ animationDelay: "1000ms" }}>
+            opacity-0 animate-fade-in [animatetion-delay:1000ms]
+          ">
           {/* .group and .vertical allows us to style child */}
-          <p style={{ writingMode: 'vertical-rl' }} className="text-sm lg:text-xs bg-background text-secondary lg:float-right group vertical">{footnotes}</p>
+          <p style={{ writingMode: 'vertical-rl' }} className="text-sm lg:text-xs font-light bg-background  lg:float-right group vertical">{footnotes}</p>
         </div>
       </div>
     </div >

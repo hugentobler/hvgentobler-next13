@@ -56,6 +56,8 @@ const customComponents = {
           className="w-full h-auto grayscale hover:cursor-pointer hover:filter-none"
           height={height}
           placeholder={`data:image/${base64}`}
+          quality={95}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           src={props.src}
           width={width}
         />
