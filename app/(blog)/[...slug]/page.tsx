@@ -5,8 +5,9 @@
   blog urls don't include the 'blog' path since it's a 'route group'
 */
 
-import { getFilesInFolder, getPost } from '../import-content'
 import { Metadata } from 'next'
+import { getFilesInFolder, getPost } from '../import-content'
+import { generateJsonLd } from '../generate-jsonLd'
 // We use next-mdx-remote instead of next/mdx so we can
 // put all the blog content outside of app folder
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -34,20 +35,23 @@ export const dynamicParams = false
 // Generate dynamic metadata
 export async function generateMetadata({ params }: { params: { slug: string[] } }): Promise<Metadata> {
   const { slug } = params
-  const { frontMatter } = getPost(slug.flat().join('/'))
+  const {
+    description,
+    title,
+  } = getPost(slug.flat().join('/'))
   return {
     metadataBase: new URL('https://hvgentobler.com'),
-    title: frontMatter.title,
-    description: frontMatter.description,
+    title: title,
+    description: description,
     openGraph: {
-      title: frontMatter.title,
-      description: frontMatter.description,
+      title: title,
+      description: description,
       url: 'https://hvgentobler.com',
       siteName: 'Christopher Hugentobler',
       images: [
         {
           height: 630,
-          url: `/og/${frontMatter.title}`,
+          url: `/og/${title}`,
           type: 'image/png',
           width: 1200
         }
@@ -64,11 +68,21 @@ export default function Page({ params }: { params: { slug: string[] } }) {
   const { slug } = params
   const {
     content,
+    dateModified,
     datePublished,
-    frontMatter,
+    datePublishedText,
+    description,
+    title,
     wordCount
   } = getPost(slug.flat().join('/'))
-  const jsonLd = getJsonLd(frontMatter, slug.flat().join('/'))
+
+  const jsonLd = generateJsonLd(
+    dateModified,
+    datePublished,
+    description,
+    title,
+    slug.flat().join('/')
+  )
 
   return (
     <article className="
@@ -91,7 +105,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         row-start-1
         mt-16 md:my-10
         bg-background text-5xl font-light tracking-tight
-        ">{frontMatter.title}</h1>
+        ">{title}</h1>
       <div className="
         col-span-1 col-start-1 row-start-2
         sm:col-start-2
@@ -102,7 +116,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         <p className="
           [writing-mode:vertical-rl] md:[writing-mode:unset]
           text-sm lg:text-xs font-light bg-background
-          ">{datePublished}&nbsp;&nbsp;&nbsp;{wordCount} words</p>
+          ">{datePublishedText}&nbsp;&nbsp;&nbsp;{wordCount} words</p>
       </div>
       <div className="
         col-span-8 col-start-3 row-start-2
@@ -147,32 +161,3 @@ export default function Page({ params }: { params: { slug: string[] } }) {
     </article >
   )
 }
-
-const getJsonLd = (frontMatter: any, path: string) => (
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": frontMatter.title,
-    "image": `https://hvgentobler.com/og/${frontMatter.title}`,
-    "url": `https://hvgentobler.com/${path}`,
-    "datePublished": new Date(frontMatter.datePublished),
-    "dateCreated": new Date(frontMatter.datePublished),
-    "dateModified": new Date(frontMatter.dateModified),
-    "description": frontMatter.description,
-    "inLanguage": "en",
-    "publisher": {
-      "@type": "Person",
-      "name": "Christopher Hugentobler",
-      "url": "https://hvgentobler.com/"
-    },
-    "author": {
-      "@type": "Person",
-      "name": "Christopher Hugentobler",
-      "url": "https://hvgentobler.com/"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://hvgentobler.com"
-    }
-  }
-)

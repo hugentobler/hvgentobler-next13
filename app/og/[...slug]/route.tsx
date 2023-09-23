@@ -2,6 +2,7 @@ import { ImageResponse } from 'next/server'
 
 export const runtime = 'edge'
 
+/* Fetch the font from the static assets folder */
 const font = fetch(
   new URL('../../../public/UniversLTStd-Cn.woff', import.meta.url)
 ).then(res => res.arrayBuffer())

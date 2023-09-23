@@ -3,19 +3,25 @@ import path from 'path'
 import matter from 'gray-matter'
 import readingTime from 'reading-time'
 
+export interface FrontMatter {
+  dateModified: string;
+  datePublished: string;
+  description: string;
+  title: string;
+}
+
 // Read the filesystem and return the content
 // Handle the frontmatter with gray matter
 export function getPost(slug: string) {
   const markdownFile = fs.readFileSync(path.join('blog', slug + '.mdx'), 'utf-8')
-  const { data: frontMatter, content } = matter(markdownFile)
-  const wordCount = readingTime(content).words.toLocaleString()
-  const datePublished = new Date(frontMatter.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })
+  // gray-matter returns the parsed YAML frontmatter as data, and the rest as content
+  const { data, content } = matter(markdownFile)
+  const frontMatter: FrontMatter = data as FrontMatter
   return {
+    ...frontMatter,
     content,
-    datePublished,
-    frontMatter,
-    slug,
-    wordCount
+    datePublishedText: new Date(data.datePublished).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }),
+    wordCount: readingTime(content).words.toLocaleString()
   }
 }
 
