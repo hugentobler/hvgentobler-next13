@@ -1,16 +1,17 @@
 import { ImageResponse } from 'next/server'
 
-export const contentType = 'image/png'
 export const runtime = 'edge'
+
+const font = fetch(
+  new URL('../../../public/UniversLTStd-Cn.woff', import.meta.url)
+).then(res => res.arrayBuffer())
 
 export async function GET(
   request: Request,
   { params }: { params: { slug: string } }
 ) {
   const slug = params.slug
-  const fontData = await fetch(
-    new URL('../../../public/UniversLTStd-Cn.woff', import.meta.url)
-  ).then(res => res.arrayBuffer())
+  const univers = await font
 
   return new ImageResponse(
     (
@@ -57,7 +58,7 @@ export async function GET(
       fonts: [
         {
           name: 'Univers',
-          data: fontData,
+          data: univers,
           style: 'normal'
         }
       ]

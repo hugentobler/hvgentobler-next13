@@ -48,6 +48,7 @@ export async function generateMetadata({ params }: { params: { slug: string[] } 
         {
           height: 630,
           url: `/og/${frontMatter.title}`,
+          type: 'image/png',
           width: 1200
         }
       ],
