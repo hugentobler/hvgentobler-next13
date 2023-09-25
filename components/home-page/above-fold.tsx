@@ -5,10 +5,10 @@ import DecoratedLink from '@/components/decorated-link'
 
 export default function AboveFold() {
 
-  const oneLiner = <>Netizen, Product Leader, Aspiring Gestaltingenieur&sup1;</>
+  const oneLiner = <>Professional researcher<sup>1</sup>, creative-engineer<sup>2</sup></>
 
   const about = [
-    <>I’m working to build a lasting internet org that embodies the golden rule&sup2;. I’m a founder of Inspect Element, a home for builders and technologists.</>,
+    <>I’m learning how to build a lasting internet org that embodies the golden rule&sup2;. I’m a founder of Inspect Element, a home for builders and technologists.</>,
     <>Typically I’m mission-driven. I care about big ideas. Often I err on the side of pragmatism. I like good aesthetic and well-prepared food. Hong Kong is home, but I’m <DecoratedLink href="#location">nomadic</DecoratedLink>.</>
   ]
 
@@ -24,7 +24,11 @@ export default function AboveFold() {
     <>Fledgling ideas on cram school culture and painpoints: <DecoratedLink href="">This is not the education you’re looking for</DecoratedLink></>,
   ]
 
-  const footnotes = <>&sup1; <DecoratedLink target="_blank" href="https://www.vitsoe.com/us/voice/design-by-vitsoe">Design by Vitsœ</DecoratedLink>&nbsp;&nbsp;&sup2; <DecoratedLink target="_blank" href="https://www.eff.org/cyberspace-independence">Promise of the Internet</DecoratedLink></>
+  const footnotes = <>
+    <span><sup>1</sup><DecoratedLink target="_blank" href="https://youtu.be/xmYekD6-PZ8">Runnin&apos; Down a Dream</DecoratedLink></span>
+    <span><sup>2</sup><DecoratedLink target="_blank" href="https://www.vitsoe.com/us/voice/design-by-vitsoe">Design by Vitsœ</DecoratedLink></span>
+    <span><sup>3</sup><DecoratedLink target="_blank" href="https://www.eff.org/cyberspace-independence">Promise of the Internet</DecoratedLink></span>
+  </>
 
   return (
     <div className="flex items-center
@@ -50,16 +54,16 @@ export default function AboveFold() {
           <div>
             <h1 className="
             text-lg lg:text-base font-light
-            bg-background inline-block leading-5
+            inline-block lg:leading-5
             mt-3
             ">Christopher Hugentobler
               <span className="lg:hidden">&nbsp;</span>
               <br className="hidden lg:block" />
               <span className="
-                font-sans inline-block -translate-x-px scale-90
+                font-sans inline-block -translate-x-px scale-90 leading-6
                 ">姚思陶</span>
             </h1>
-            <p className="text-sm lg:text-xs bg-background">{oneLiner}</p>
+            <p className="text-sm lg:text-xs">{oneLiner}</p>
           </div>
         </div>
         <div className="
@@ -70,7 +74,6 @@ export default function AboveFold() {
           xl:col-span-4 xl:col-start-3">
           <h3 className="
           text-lg lg:text-base font-light
-          bg-background inline
           before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/8)]
           ">About</h3>
           {about.map((e, i) => (
@@ -78,11 +81,14 @@ export default function AboveFold() {
           ))}
           <h3 className="
           text-lg lg:text-base font-light
-          bg-background inline-block mt-5
-          ">Work</h3>
-          {work.map((e, i) => (
-            <p key={i} className="mb-3 last:mb-0 text-sm lg:text-xs bg-background">{e}</p>
+          inline-block mt-5
+          ">Artifacts</h3>
+          {artifacts.map((e, i) => (
+            <p key={i} className="mb-3 text-sm lg:text-xs">{e}</p>
           ))}
+          {/* @ts-expect-error Async Server Component */}
+          <BookIsReading />
+          <p className="mb-3 text-sm lg:text-xs">And <DecoratedLink href="#reading">more</DecoratedLink>.</p>
         </div>
         <div className="
           col-span-8 col-start-3 pr-0
@@ -92,28 +98,20 @@ export default function AboveFold() {
           xl:col-span-4 xl:col-start-7">
           <h3 className="
           text-lg lg:text-base font-light
-          bg-background inline
           before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/8)]
-          ">Artifacts</h3>
-          {artifacts.map((e, i) => (
-            <p key={i} className="mb-3 text-sm lg:text-xs bg-background">{e}</p>
+          ">Work</h3>
+          {work.map((e, i) => (
+            <p key={i} className="mb-3 last:mb-0 text-sm lg:text-xs">{e}</p>
           ))}
-          <h3 className="
-            text-lg lg:text-base font-light
-            bg-background inline-block mt-5
-          ">Reading</h3>
-          {/* @ts-expect-error Async Server Component */}
-          <BookIsReading />
-          <p className="mb-3 text-sm lg:text-xs bg-background">And <DecoratedLink href="#reading">more</DecoratedLink>.</p>
         </div>
         <div className="
-            col-span-1 lg:self-end
-            col-start-1 lg:col-start-11
-            row-start-2 lg:row-start-1
+            col-span-1 col-start-1 lg:col-start-11
+            row-span-2 row-start-2 translate-y-2 md:translate-y-0 lg:row-span-1 lg:translate-y-2
+            md:row-end-3 md:row-span-2 md:self-end lg:self-auto
             opacity-0 animate-fade-in [animatetion-delay:1000ms]
           ">
           {/* .group and .vertical allows us to style child */}
-          <p style={{ writingMode: 'vertical-rl' }} className="text-sm lg:text-xs font-light bg-background  lg:float-right group vertical">{footnotes}</p>
+          <p style={{ writingMode: 'vertical-rl' }} className="text-sm lg:text-xs font-light lg:float-right group vertical space-y-6 flex">{footnotes}</p>
         </div>
       </div>
     </div >
