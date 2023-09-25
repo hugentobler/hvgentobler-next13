@@ -30,7 +30,7 @@ export default function AboveFold() {
     <div className="flex items-center
     py-4 lg:py-0 lg:h-[calc(100vh-1rem-1.5rem)] lg:min-h-[560px]">
       <div className="
-      grid z-20 lg:-translate-y-4
+      grid lg:-translate-y-4
       grid-cols-11 gap-x-8 gap-y-8
       ">
         <div className="

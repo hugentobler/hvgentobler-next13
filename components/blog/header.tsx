@@ -10,15 +10,13 @@ const nav: { [key: string]: string } = {
 export default function BlogHeader() {
   return (
     <div className="
-        z-10 sticky top-1 py-4
-        grid grid-cols-11
+        z-10 sticky top-0 py-3 md:py-4
+        grid grid-cols-11 gap-x-3 lg:gap-x-8
         text-sm lg:text-xs font-light leading-none
         opacity-0 animate-fade-in [animation-delay:1000ms]
         ">
-      <Nav className="
-        space-x-3 whitespace-nowrap col-start-1 sm:col-start-2 md:col-start-1
-        " />
-      <div className="whitespace-nowrap justify-self-end col-end-12 sm:col-end-11 md:col-end-12">
+      <Nav className="col-span-4 flex flex-wrap gap-x-3 gap-y-2 whitespace-nowrap self-baseline" />
+      <div className="justify-self-end col-span-7 sm:col-end-11 md:col-end-12 flex flex-wrap-reverse justify-end gap-x-3 gap-y-2">
         <Clock />
         <CurrentLocation />
         <div className="inline"><ThemeToggle /></div>
@@ -41,6 +39,6 @@ const CurrentLocation = ({ ...props }) => {
   const currentLocation = locations[0]
 
   return (
-    <span {...props}>&nbsp;&nbsp; {currentLocation.place} &nbsp;&nbsp;</span>
+    <span {...props}>{currentLocation.place}</span>
   )
 }

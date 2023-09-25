@@ -1,4 +1,3 @@
-
 import Link from 'next/link'
 
 export default function DecoratedLink({
@@ -25,8 +24,13 @@ export default function DecoratedLink({
     ${className ? className : ''}`
 
   return (
-    <Link href={href} scroll={false} target={target} className={styles} onClick={onClick} {...props}>
-      {children}
-    </Link>
+    <>
+      <Link href={href} scroll={false} target={target} className={styles} onClick={onClick} {...props}>
+        {children}
+      </Link>
+      {target == '_blank' ?
+        <span className="inline-block -rotate-45 translate-x-1 group-[.vertical]:translate-y-1"><sup>&rarr;</sup></span> : ''
+      }
+    </>
   )
 }
