@@ -5,15 +5,18 @@ import { locations } from '@/data/locations'
 
 export default function Locations() {
   return (
-    <div id="location" className="my-10">
-      <header className="sticky top-0 py-1 z-10">
-        <div className="
-          grid grid-cols-7 gap-x-6
-          text-zinc-900 text-xs font-light">
-          <h3 className="col-start-2 col-span-2 bg-zinc-100">Travels</h3>
-          <h3 className="col-span-2 bg-zinc-100">Time</h3>
-          <h3 className="col-span-2 bg-zinc-100">Place</h3>
-        </div>
+    <div id="location" className="py-8 md:py-16">
+      <header className="
+        sticky top-9 py-1 z-10
+        grid grid-cols-11 gap-x-3 md:gap-x-8
+        bg-neutral-100/75 dark:bg-neutral-900/75 backdrop-blur
+        text-sm lg:text-xs items-baseline
+        ">
+        <h3 className="
+        text-lg lg:text-base font-light
+        col-start-1 col-span-1">Travels</h3>
+        <h3 className="col-start-2 col-span-1">Time</h3>
+        <h3 className="col-start-5 col-span-2">Place</h3>
       </header >
       <ul className="divide-y divide-zinc-150 border-t border-zinc-200">
         {locations.map(({ time, place, content }, i) => (

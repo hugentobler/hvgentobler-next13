@@ -25,7 +25,8 @@ export default function DecoratedLink({
 
   return (
     <>
-      <Link href={href} scroll={false} target={target} className={styles} onClick={onClick} {...props}>
+      {/* next/link scroll=false will break on-page # navigation */}
+      <Link href={href} target={target} className={styles} onClick={onClick} {...props}>
         {children}
       </Link>
       {target == '_blank' ?
