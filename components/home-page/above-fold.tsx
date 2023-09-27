@@ -5,17 +5,17 @@ import DecoratedLink from '@/components/decorated-link'
 
 export default function AboveFold() {
 
-  const oneLiner = <>Professional researcher<sup>1</sup>, creative-engineer<sup>2</sup></>
+  const oneLiner = <>Professional researcher<sup className="font-light">1</sup>, creative-engineer<sup className="font-light">2</sup></>
 
   const about = [
-    <>I’m learning how to build a lasting internet org that embodies the golden rule&sup2;. I’m a founder of Inspect Element, a home for builders and technologists.</>,
-    <>Typically I’m mission-driven. I care about big ideas. Often I err on the side of pragmatism. I like good aesthetic and well-prepared food. Hong Kong is home, but I’m <DecoratedLink href="#location">nomadic</DecoratedLink>.</>
+    <>I’m learning to build a lasting internet org that embodies the golden rule<sup className="font-light">3</sup>. I’m a founder of Inspect Element, a home for builders and technologists.</>,
+    <>Typically I’m mission-driven. I care about big ideas. Often I err on the side of pragmatism. I like great aesthetic, and well-prepared food. Hong Kong is home, but I’m <DecoratedLink href="#places">nomadic</DecoratedLink>.</>
   ]
 
   const work = [
     <>Inspect Element is a new software venture builder. We help emerging software builders in Hong Kong, breathing fresh ideas and tactics into the local scene. We run an agency, a founders incubator, and a seed fund.</>,
     <>Recently I started something new in circular design and manufacturing. We imagine a world where circular and sustainable materials are 10x cheaper. We want to make these materials ubiquitous in mass production.</>,
-    <>Prior to IE, I held product and growth leadership roles at several early-stage startups. And I started several startups that failed. I’ve worked with companies like Bowtie, Clearbanc, Time Auction, 24 Hour Race and <DecoratedLink href="#location">more</DecoratedLink>.</>,
+    <>Prior to IE, I held product and growth leadership roles at several early-stage startups. And I started several startups that failed. I’ve worked with companies like Bowtie, Clearbanc, Time Auction, 24 Hour Race and <DecoratedLink href="#work">more</DecoratedLink>.</>,
   ]
 
   const artifacts = [
@@ -63,7 +63,7 @@ export default function AboveFold() {
                 font-sans inline-block -translate-x-px scale-90 leading-6
                 ">姚思陶</span>
             </h1>
-            <p className="text-sm lg:text-xs">{oneLiner}</p>
+            <p className="mt-1 text-sm lg:text-xs">{oneLiner}</p>
           </div>
         </div>
         <div className="

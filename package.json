@@ -20,7 +20,6 @@
     "remark-unwrap-images": "^3.0.1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.14.3",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",

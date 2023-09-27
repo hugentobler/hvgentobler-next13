@@ -48,7 +48,6 @@ module.exports = {
       // this class is applied to html by theme-effect.ts
       // like how dark: gets enabled
       addVariant('system', '.system &')
-    }),
-    require('@tailwindcss/typography')
+    })
   ]
 }
