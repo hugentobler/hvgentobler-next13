@@ -28,9 +28,10 @@ export default function Locations() {
         ">
         <h3 className="
         text-lg lg:text-base font-light
-        col-start-1 col-span-1">Travels</h3>
+        col-start-3 col-span-1 sm:col-start-2 lg:col-start-1">Travels</h3>
         {/* <h3 className="col-start-2 col-span-1">Time</h3>
-        <h3 className="col-start-5 col-span-2">Place</h3> */}
+        <h3 className="col-start-5 col-span-2">Place</h3>
+       defaultChecked={i == 0} */}
       </header >
       <ul className="divide-y divide-neutral-200 border-y">
         {locations.map(({ time, place, content }, i) => {
@@ -42,22 +43,33 @@ export default function Locations() {
               <input type="radio" name="loc" id={`input-${i}`} value={hash}
                 className={`peer appearance-none ${content ? "cursor-pointer" : ""} absolute w-full h-full`
                 }
-                defaultChecked={i == 0}
                 disabled={content ? false : true}
                 onClick={() => (setTimeout(() => { location.href = `#${hash}` }, 250))}
               />
               <label htmlFor={`input-${i}`} className="
-              grid grid-cols-12 gap-x-6 justify-between
+              grid grid-cols-11 gap-x-3 justify-between
               py-3 text-sm text-secondary leading-4
               peer-enabled:peer-hover:text-primary peer-enabled:peer-hover:bg-neutral-50
               peer-checked:text-primary peer-checked:bg-neutral-50
               ">
-                <div className="col-span-6 justify-self-end">
+                <div className="col-span-4 col-start-3
+                  sm:col-start-2 md:col-start-2 md:col-span-3
+                  lg:col-start-1 lg:col-span-2">
                   <p>{place}</p>
                 </div>
-                <div className="col-span-6">
+                <div className="col-end-11 justify-self-end whitespace-nowrap
+                 sm:col-start-7 sm:col-end-auto sm:justify-self-auto
+                 md:col-start-5
+                 lg:col-start-3
+                 ">
                   <p>{time}</p>
                 </div>
+                {content &&
+                  <div className="hidden md:block col-start-7 col-span-4">
+                    <span className="line-clamp-1">                    {content.text}
+                    </span>
+                  </div>
+                }
               </label>
               {content &&
                 <div className="

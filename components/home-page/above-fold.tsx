@@ -77,7 +77,7 @@ export default function AboveFold() {
           before:block before:h-0 before:w-0 before:-mt-[calc(1.5rem/8)]
           ">About</h3>
           {about.map((e, i) => (
-            <p key={i} className="mb-3 text-sm lg:text-xs background">{e}</p>
+            <p key={i} className="mb-3 text-sm background">{e}</p>
           ))}
           <h3 className="
           text-lg lg:text-base font-light

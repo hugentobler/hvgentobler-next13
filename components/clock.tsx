@@ -17,7 +17,7 @@ export default function ClockClientOnly({ ...props }) {
   }, [])
 
   if (!hasMounted) {
-    return null;
+    return null
   }
 
   return (

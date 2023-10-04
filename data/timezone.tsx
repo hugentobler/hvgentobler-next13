@@ -1,8 +1,8 @@
 // First one is displayed
 
 export const timezone = [
-  'America/Los_Angeles',
   'Asia/Hong_Kong',
+  'America/Los_Angeles',
   'Europe/Paris',
   'Europe/London',
 ]
