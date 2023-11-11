@@ -35,10 +35,25 @@
     html {
         height: -webkit-fill-available;
     }
+
+    h2 {
+        @apply mb-4 text-2xl font-light tracking-tight md:text-xl;
+    }
+
+    p {
+        @apply mb-4 text-sm last:mb-0 md:text-xs;
+    }
+
+    p + h2 {
+        @apply mt-8;
+    }
+
+    sup {
+        @apply font-light;
+    }
 }
 
 @layer utilities {
-
     /* Enable scroll timeline animations */
     /* https://twitter.com/shuding_/status/1698176794124578923 */
     .scroll-timeline-y {

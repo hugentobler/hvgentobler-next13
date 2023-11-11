@@ -38,7 +38,7 @@ export default function Locations() {
           const city = place.split(',')[0]
           const hash = city.toLowerCase().replace(/\s/g, '-') + '-' + time.toLowerCase().replace(/\s/g, '-')
           return (
-            <li key={i} id={hash} className="group relative target:scroll-mt-20">
+            <li key={i} id={hash} className="relative target:scroll-mt-20">
               {/* Input 'name' groups all radio buttons. Setting a constant here allows radio buttons to be toggled without javascript */}
               <input type="radio" name="loc" id={`input-${i}`} value={hash}
                 className={`peer appearance-none ${content ? "cursor-pointer" : ""} absolute w-full h-full`
@@ -47,7 +47,7 @@ export default function Locations() {
                 onClick={() => (setTimeout(() => { location.href = `#${hash}` }, 250))}
               />
               <label htmlFor={`input-${i}`} className="
-              grid grid-cols-11 gap-x-3 justify-between
+              group grid grid-cols-11 gap-x-3 md:gap-x-8 justify-between
               py-3 text-sm text-secondary leading-4
               peer-enabled:peer-hover:text-primary peer-enabled:peer-hover:bg-neutral-50
               peer-checked:text-primary peer-checked:bg-neutral-50
@@ -66,8 +66,7 @@ export default function Locations() {
                 </div>
                 {content &&
                   <div className="hidden md:block col-start-7 col-span-4">
-                    <span className="line-clamp-1">                    {content.text}
-                    </span>
+                    <span className="line-clamp-1 group:peer-checked:line-clamp-none">{content.text}</span>
                   </div>
                 }
               </label>
