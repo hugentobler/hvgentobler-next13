@@ -170,7 +170,6 @@ export default function AboveFold() {
           {artifacts.map((e, i) => (
             <p key={i}>{e}</p>
           ))}
-          {/* @ts-expect-error Async Server Component */}
           <BookIsReading />
           <p>
             And <DecoratedLink href="#reading">more</DecoratedLink>.
