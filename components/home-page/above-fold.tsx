@@ -12,8 +12,8 @@ export default function AboveFold() {
 
   const about = [
     <>
-      My current focus is building a lasting internet company that embodies the
-      golden rule<sup>3</sup>. I’m CEO at Ansel, using AI and software to reduce
+      I aim to build a lasting internet company that embodies the golden rule
+      <sup>3</sup>. I’m CEO at Ansel, using AI and software to reduce
       externalities. I’m a partner at Inspect Element, serving Hong Kong
       builders and technologists.
     </>,
@@ -26,41 +26,39 @@ export default function AboveFold() {
 
   const work = [
     <>
-      Inspect Element is a new software venture builder. We help emerging
-      software builders in Hong Kong, breathing fresh ideas and tactics into the
-      local scene. We run an agency, a founders incubator, and a seed fund.
+      Inspect Element is an early-stage software venture builder. We help
+      emerging software builders in Hong Kong, by breathing modern tactics and
+      global ambition into the local scene. We run a full-service agency, a
+      founders incubator, and a seed fund.
     </>,
     <>
-      Recently I started something new in circular design and manufacturing. We
-      imagine a world where circular and sustainable materials are 10x cheaper.
-      We want to make these materials ubiquitous in mass production.
+      Recently I became passionate about circular design, manufacturing, and
+      supply chains. I imagine a world where circular materials are 10x cheaper,
+      and ubiquitous in mass production. Ansel is the latest attempt to turn
+      this vision into reality.
     </>,
     <>
-      Prior to IE, I held product and growth leadership roles at several
-      early-stage startups. And I started several startups that failed. I’ve
-      worked with companies like Bowtie, Clearbanc, Time Auction, 24 Hour Race
-      and <DecoratedLink href="#work">more</DecoratedLink>.
+      Prior to IE, I led product and design at Bowtie, an award-winning virtual
+      insurance startup. And I led product and growth at Snapask, a
+      venture-backed education startup. I started several mobile apps, worked
+      with companies like Clearbanc, Time Auction, and co-founded a charity
+      called 24 Hour Race.{" "}
+      <DecoratedLink href="#resume">Read more</DecoratedLink>.
     </>,
   ];
 
   const artifacts = [
     <>
-      Essay on my time at Bowtie, leading product and design:{" "}
       <DecoratedLink href="/2022/bowtie">
-        12 months of agile product development
+        Read an essay of my time at Bowtie
       </DecoratedLink>
+      , leading product and design between their series A and B. [2022]
     </>,
     <>
-      Travelogue of a monthlong pandemic roadtrip:{" "}
       <DecoratedLink href="https://google.com">
-        Thirty Taiwan vanlife days
+        Explore Taiwan from the back of a van
       </DecoratedLink>
-    </>,
-    <>
-      Fledgling ideas on cram school culture and painpoints:{" "}
-      <DecoratedLink href="">
-        This is not the education you’re looking for
-      </DecoratedLink>
+      , during a monthlong pandemic roadtrip. [2020]
     </>,
   ];
 
@@ -171,9 +169,6 @@ export default function AboveFold() {
             <p key={i}>{e}</p>
           ))}
           <BookIsReading />
-          <p>
-            And <DecoratedLink href="#reading">more</DecoratedLink>.
-          </p>
         </div>
         <div
           className="
