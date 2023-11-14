@@ -40,6 +40,10 @@
         @apply mb-4 text-2xl font-light tracking-tight md:text-xl;
     }
 
+    h3 {
+        @apply mb-4 text-xl font-light tracking-tight md:text-lg;
+    }
+
     p {
         @apply mb-4 text-sm last:mb-0 md:text-xs;
     }

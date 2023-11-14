@@ -118,7 +118,7 @@ export default function Page({ params }: { params: { slug: string[] } }) {
         animate-fade-in col-span-1 col-start-1
         row-start-2
         opacity-0
-        sm:col-start-2 md:mb-6
+        sm:col-start-2 md:mb-8
         md:animate-none md:opacity-100 lg:mb-0 lg:h-[calc(100%-8rem)]
         "
       >
@@ -134,7 +134,8 @@ export default function Page({ params }: { params: { slug: string[] } }) {
       <div
         className="
         col-span-8 col-start-3 row-start-2
-        first-letter:float-left first-letter:-mb-6 first-letter:mr-2 first-letter:mt-1 first-letter:text-8xl first-letter:font-extralight first-letter:leading-none
+        space-y-4 first-letter:float-left first-letter:-mb-6 first-letter:mr-2 first-letter:mt-1 first-letter:text-8xl first-letter:font-extralight
+        first-letter:leading-none
       "
       >
         <MDXRemote
