@@ -50,7 +50,7 @@ export default function AboveFold() {
   const artifacts = [
     <>
       <DecoratedLink href="/2022/bowtie">
-        Read an essay of my time at Bowtie
+        An essay of my year at Bowtie
       </DecoratedLink>
       , leading product and design between their series A and B. [2022]
     </>,
@@ -96,12 +96,7 @@ export default function AboveFold() {
       className="flex items-center
     py-8 md:py-16 lg:h-[calc(100svh-4rem)] lg:min-h-[560px] lg:py-0"
     >
-      <div
-        className="
-      grid grid-cols-11
-      gap-x-8 gap-y-8 md:gap-x-10 lg:-translate-y-4 lg:gap-x-16
-      "
-      >
+      <div className="homepage-grid">
         <div
           className="
           col-span-8

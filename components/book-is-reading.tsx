@@ -28,7 +28,7 @@ export default async function BookIsReading() {
               </DecoratedLink>{" "}
               by {book.authors[0].name}
               {i + 1 == books.length ? "." : ","}
-              {i + 1 < books.length && " and "}
+              {i + 1 < books.length && " and"}
             </span>
           ))}
         </p>
