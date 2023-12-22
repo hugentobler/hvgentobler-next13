@@ -1,23 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { locations } from "@/data/locations";
+import { locations, ContentItem } from "@/data/locations";
 
-export default function Locations() {
-  // KNOWN BUG: React Radio button defaultChecked is broken in development
-  // NOTE: https://github.com/vercel/next.js/issues/49499
-  // useEffect(() => {
-  //   if (process.env.NODE_ENV === "development") {
-  //     document.querySelectorAll("input[type=radio]").forEach((elem) => {
-  //       if (elem.hasAttribute("checked")) {
-  //         (elem as HTMLInputElement).checked = true;
-  //       }
-  //     });
-  //   }
-  // }, []);
-
+export default function Travels() {
   return (
-    <div id="places" className="py-8 md:py-16">
+    <section id="travels" className="homepage-section">
       <header className="homepage-grid homepage-header top-11 py-1 md:top-12">
         <h2
           className="
@@ -55,11 +43,10 @@ export default function Locations() {
               <label
                 htmlFor={`input-${i}`}
                 className="
-              text-secondary peer-enabled:peer-hover:text-primary peer-checked:text-primary group grid grid-cols-11
-              justify-between gap-x-3 py-3 text-sm
-              leading-4 peer-checked:bg-neutral-50
-              peer-enabled:peer-hover:bg-neutral-50 md:gap-x-8
-              "
+                  text-secondary peer-enabled:peer-hover:text-primary peer-checked:text-primary homepage-grid group justify-between
+                  py-3 peer-checked:bg-neutral-50
+                  peer-enabled:peer-hover:bg-neutral-50
+                "
               >
                 <div
                   className="col-span-4 col-start-3
@@ -78,46 +65,69 @@ export default function Locations() {
                   <p>{time}</p>
                 </div>
                 {content && (
-                  <div className="col-span-4 col-start-7 hidden md:block">
-                    <span className="group:peer-checked:line-clamp-none line-clamp-1">
-                      {content.text}
-                    </span>
-                  </div>
+                  <>
+                    <div className="col-span-4 col-start-7 hidden md:block">
+                      <span className="group:peer-checked:line-clamp-none line-clamp-1">
+                        {content.text}
+                      </span>
+                    </div>
+                  </>
                 )}
               </label>
               {content && (
                 <div
                   className="
-                grid h-0 origin-top scale-y-0
-                grid-flow-row-dense grid-cols-12 gap-1 text-sm
-                peer-checked:h-auto peer-checked:scale-y-100 peer-checked:bg-neutral-50
-                peer-checked:pb-3
-                "
+                    homepage-grid *:col-span-8 *:col-start-3
+                    *:sm:col-span-5 odd:*:sm:col-start-2 even:*:sm:col-start-7 odd:*:md:col-span-4 odd:*:md:col-start-1 even:*:md:col-span-7 even:*:md:col-start-5 odd:*:lg:col-span-6 even:*:lg:col-span-5
+                    h-0 origin-top scale-y-0
+                    peer-checked:h-auto peer-checked:scale-y-100 peer-checked:bg-neutral-50
+                    peer-checked:pb-8 peer-checked:pt-4
+                  "
                 >
-                  <div
-                    className="col-span-7 col-start-5 px-3
-                    first-letter:float-left first-letter:-mb-4 first-letter:mr-1 first-letter:mt-1 first-letter:text-6xl first-letter:font-extralight first-letter:leading-none
-                    "
-                  >
-                    {content.text}
-                  </div>
-                  {content.images &&
-                    content.images.map((img, i) => (
-                      <Image
-                        key={i}
-                        className="col-span-4"
-                        alt=""
-                        src={img}
-                        width={500}
-                        height={250}
-                      />
-                    ))}
+                  <RenderContentItems contentItems={content} />
                 </div>
               )}
             </li>
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 }
+
+const RenderContentItems = ({
+  contentItems,
+}: {
+  contentItems: ContentItem[];
+}) => {
+  return (
+    <>
+      {contentItems.map((item, index) => {
+        if (item.img) {
+          return (
+            <div key={index} className="overflow-hidden rounded-sm">
+              <Image
+                src={`/blog/${item.img}`}
+                alt={item.img}
+                width={500}
+                height={250}
+              />
+            </div>
+          );
+        } else if (item.p) {
+          return (
+            <p
+              key={index}
+              className="mb-0 first-of-type:first-letter:float-left first-of-type:first-letter:-mb-4 first-of-type:first-letter:mr-1 first-of-type:first-letter:mt-1 first-of-type:first-letter:text-6xl first-of-type:first-letter:font-extralight
+              first-of-type:first-letter:leading-none"
+            >
+              {item.p}
+            </p>
+          );
+        } else {
+          return null;
+        }
+      })}
+    </>
+  );
+};

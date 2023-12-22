@@ -20,7 +20,7 @@ export default function AboveFold() {
     <>
       I’m mission-driven. I care about big ideas. I’m usually quite pragmatic. I
       like great aesthetic, well-made food, hand-crafted objects. Hong Kong is
-      home, but I’m <DecoratedLink href="#places">nomadic</DecoratedLink>.
+      home, but I’m <DecoratedLink href="#travels">nomadic</DecoratedLink>.
     </>,
   ];
 
@@ -92,10 +92,7 @@ export default function AboveFold() {
   );
 
   return (
-    <div
-      className="flex items-center
-    py-8 md:py-16 lg:h-[calc(100svh-4rem)] lg:min-h-[560px] lg:py-0"
-    >
+    <section className="homepage-section flex items-center lg:h-[calc(100svh-4rem)] lg:min-h-[560px]">
       <div className="homepage-grid">
         <div
           className="
@@ -202,6 +199,6 @@ export default function AboveFold() {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
